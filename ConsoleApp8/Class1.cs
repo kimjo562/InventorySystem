@@ -109,8 +109,16 @@ namespace ConsoleApp8
                 }
                 else if (choice == "6")
                 {
-                    Console.WriteLine("You drank one potion... it did nothing.");
-                    potionHeld -= 1;
+                    if(potionHeld <= 0)
+                    {
+                        Console.WriteLine("Are you trying to drink nothing? Are you dumb?\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You drank one potion... it did nothing.\n");
+                        potionHeld -= 1;
+                        inventoryWeight -= 2;
+                    }
 
                 }
             }
