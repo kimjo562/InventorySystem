@@ -29,7 +29,7 @@ namespace ConsoleApp8
                 // Display Menu
                 Console.WriteLine("Inventory Menu");
                 Console.WriteLine("Money: " + gold + "    Weapon Damage: " + currentDamage + "    Armor Defense: " + currentDefense + "    Weight: " +inventoryWeight);
-                Console.WriteLine("1.) Equip Weapon    2.) Unequip Weapon   3.) Add Gold    4.) Remove Gold    Q.) Quit");
+                Console.WriteLine("1.) Equip Weapon    \n2.) Unequip Weapon    \n3.) Add Gold    \n4.) Remove Gold    \nQ.) Quit");
 
                 //Get input
                 choice = Console.ReadLine();
@@ -96,72 +96,60 @@ namespace ConsoleApp8
         {
             if (subChoice == "1")
             {
-                Console.WriteLine("You have spawned in the Great Sword.");
                 damage = 75;
                 weaponWeight = 35;
+                WeaponWeightFix();                                           // Makes it so Weight doesn't stack or lose with other equipment weights.
 
-                currentDamage = 0;
-                currentDamage += damage;
-                inventoryWeight = 0;                                        // Resets Weight and doesn't stack with current armor Weight 
-                inventoryWeight += armorWeight;
-                inventoryWeight += weaponWeight;
-
-                if(inventoryWeight > maxInventoryWeight)                    // If Weight exceeds max
+                if (inventoryWeight > maxInventoryWeight)                    // If Weight exceeds max
                 {
                     Console.WriteLine("This would exceed your max carry limit!");           
                     inventoryWeight -= weaponWeight;                        // Reverts changes
                     currentDamage -= damage;
                 }
+                else
+                {
+                    Console.WriteLine("You have spawned in the Great Sword.");
+                }
             }
             else if (subChoice == "2")
             {
-                Console.WriteLine("You have spawned in the Sword.");
                 damage = 25;
                 weaponWeight = 10;
-
-                currentDamage = 0;
-                currentDamage += damage;
-                inventoryWeight = 0;                                      
-                inventoryWeight += armorWeight;
-                inventoryWeight += weaponWeight;
+                WeaponWeightFix();
 
                 if (inventoryWeight > maxInventoryWeight)
                 {
                     Console.WriteLine("This would exceed your max carry limit!");
                     inventoryWeight -= weaponWeight;
                     currentDamage -= damage;
+                }
+                else
+                {
+                    Console.WriteLine("You have spawned in the Sword.");
                 }
             }
             else if (subChoice == "3")
             {
-                Console.WriteLine("You have spawned in the Dagger");
                 damage = 20;
                 weaponWeight = 5;
-
-                currentDamage = 0;
-                currentDamage += damage;
-                inventoryWeight = 0;                                       
-                inventoryWeight += armorWeight;
-                inventoryWeight += weaponWeight;
+                WeaponWeightFix();
 
                 if (inventoryWeight > maxInventoryWeight)
                 {
                     Console.WriteLine("This would exceed your max carry limit!");
                     inventoryWeight -= weaponWeight;
                     currentDamage -= damage;
+                }
+                else
+                {
+                    Console.WriteLine("You have spawned in the Dagger");
                 }
             }
             else if (subChoice == "4")
             {
-                Console.WriteLine("You have spawned in the Spear.");
                 damage = 30;
                 weaponWeight = 15;
-
-                currentDamage = 0;
-                currentDamage += damage;
-                inventoryWeight = 0;                                     
-                inventoryWeight += armorWeight;
-                inventoryWeight += weaponWeight;
+                WeaponWeightFix();
 
                 if (inventoryWeight > maxInventoryWeight)
                 {
@@ -169,24 +157,26 @@ namespace ConsoleApp8
                     inventoryWeight -= weaponWeight;
                     currentDamage -= damage;
                 }
+                else
+                {
+                    Console.WriteLine("You have spawned in the Spear.");
+                }
             }
             else if (subChoice == "5")
             {
-                Console.WriteLine("You have spawned in the Bow.");
                 damage = 25;
                 weaponWeight = 10;
-
-                currentDamage = 0;
-                currentDamage += damage;
-                inventoryWeight = 0;                                       
-                inventoryWeight += armorWeight;
-                inventoryWeight += weaponWeight;
+                WeaponWeightFix();
 
                 if (inventoryWeight > maxInventoryWeight)
                 {
                     Console.WriteLine("This would exceed your max carry limit!");
                     inventoryWeight -= weaponWeight;
                     currentDamage -= damage;
+                }
+                else
+                {
+                    Console.WriteLine("You have spawned in the Bow.");
                 }
             }
             else if(subChoice != "0")
@@ -205,18 +195,17 @@ namespace ConsoleApp8
                 Console.WriteLine("You have equipped the Leather Armor.");
                 defense = 10;
                 armorWeight = 10;
-
-                currentDefense = 0;
-                currentDefense += defense;
-                inventoryWeight = 0;                                        
-                inventoryWeight += weaponWeight;
-                inventoryWeight += armorWeight;
+                ArmorWeightFix();
 
                 if (inventoryWeight > maxInventoryWeight)
                 {
                     Console.WriteLine("This would exceed your max carry limit!");
                     inventoryWeight -= armorWeight;
                     currentDefense -= defense;
+                }
+                else
+                {
+                    Console.WriteLine("You have equipped the Leather Armor.");
                 }
             }
             else if (subChoice == "2")
@@ -224,12 +213,7 @@ namespace ConsoleApp8
                 Console.WriteLine("You have equipped the Chain Armor.");
                 defense = 15;
                 armorWeight = 15;
-
-                currentDefense = 0;
-                currentDefense += defense;
-                inventoryWeight = 0;                                        
-                inventoryWeight += weaponWeight;
-                inventoryWeight += armorWeight;
+                ArmorWeightFix();
 
                 if (inventoryWeight > maxInventoryWeight)
                 {
@@ -237,24 +221,26 @@ namespace ConsoleApp8
                     inventoryWeight -= armorWeight;
                     currentDefense -= defense;
                 }
+                else
+                {
+                    Console.WriteLine("You have equipped the Chain Armor.");
+                }
             }
             else if (subChoice == "3")
             {
-                Console.WriteLine("You have equipped the Iron Armor.");
                 defense = 20;
                 armorWeight = 20;
-
-                currentDefense = 0;
-                currentDefense += defense;
-                inventoryWeight = 0;                                        
-                inventoryWeight += weaponWeight;
-                inventoryWeight += armorWeight;
+                ArmorWeightFix();
 
                 if (inventoryWeight > maxInventoryWeight)
                 {
                     Console.WriteLine("This would exceed your max carry limit!");
                     inventoryWeight -= armorWeight;
                     currentDefense -= defense;
+                }
+                else
+                {
+                    Console.WriteLine("You have equipped the Iron Armor.");
                 }
             }
             else if (subChoice == "4")
@@ -262,18 +248,17 @@ namespace ConsoleApp8
                 Console.WriteLine("You have equipped the Cloth Armor.");
                 defense = 5;
                 armorWeight = 5;
-
-                currentDefense = 0;
-                currentDefense += defense;
-                inventoryWeight = 0;                                        
-                inventoryWeight += weaponWeight;
-                inventoryWeight += armorWeight;
+                ArmorWeightFix();
 
                 if (inventoryWeight > maxInventoryWeight)
                 {
                     Console.WriteLine("This would exceed your max carry limit!");
                     inventoryWeight -= armorWeight;
                     currentDefense -= defense;
+                }
+                else
+                {
+                    Console.WriteLine("You have equipped the Cloth Armor.");
                 }
             }
             else if (subChoice != "0")
@@ -283,13 +268,12 @@ namespace ConsoleApp8
             }
             Console.WriteLine("Your current armor yields " + currentDefense + " defense.\n");
 
-
-
         }
 
         public void UnequipWeapon()
         {
-            if (damage == 5)
+
+            if (currentDamage == 5)
             {
                 Console.WriteLine("You can't delete something you don't even have!\n");
 
@@ -297,11 +281,27 @@ namespace ConsoleApp8
             else
             {
                 Console.WriteLine("You deleted your weapon.");
-                damage = 5;
+                currentDamage = 5;
                 weaponWeight = 0;
+                inventoryWeight = 0;
+
+                inventoryWeight += weaponWeight;
+                inventoryWeight += armorWeight;
                 Console.WriteLine("You have no weapon, you do " + currentDamage + " damage.\n");
 
             }
+
+        }
+
+        public void UnequipArmor()
+        {
+            currentDefense = 0;
+            armorWeight = 0;
+            inventoryWeight = 0;
+
+            inventoryWeight += armorWeight;
+            inventoryWeight += weaponWeight;
+            Console.WriteLine("You have no armor, you have " + currentDefense + " armor.\n");
 
         }
 
@@ -323,5 +323,25 @@ namespace ConsoleApp8
             }
 
         }
+
+        public void WeaponWeightFix()
+        {
+            currentDamage = 0;
+            currentDamage += damage;
+            inventoryWeight = 0;
+            inventoryWeight += armorWeight;
+            inventoryWeight += weaponWeight;
+        }
+
+        public void ArmorWeightFix()
+        {
+            currentDefense = 0;
+            currentDefense += defense;
+            inventoryWeight = 0;
+            inventoryWeight += weaponWeight;
+            inventoryWeight += armorWeight;
+        }
+
+
     }
 }
