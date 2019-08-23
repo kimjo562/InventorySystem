@@ -15,21 +15,19 @@ namespace ConsoleApp8
         int currentDefense = 0;
         int weaponWeight = 0;
         int armorWeight = 0;
+        int potionWeight = 2;
         int inventoryWeight = 0;
         int maxInventoryWeight = 50;
 
         public void Menu()
         {
             string choice = "";
-
-
-
             while (choice != "Q")
             {
                 // Display Menu
                 Console.WriteLine("Inventory Menu");
-                Console.WriteLine("Money: " + gold + "    Weapon Damage: " + currentDamage + "    Armor Defense: " + currentDefense + "    Weight: " + inventoryWeight + " / "+ maxInventoryWeight);
-                Console.WriteLine("1.) Equip Weapon    \n2.) Unequip Weapon    \n3.) Add Gold    \n4.) Remove Gold    \nQ.) Quit");
+                Console.WriteLine("Money: " + gold + "    Weapon Damage: " + currentDamage + "    Armor Defense: " + currentDefense + "    Weight: " + inventoryWeight + " / " + maxInventoryWeight);
+                Console.WriteLine("1.) Equip Weapon \n2.) Unequip Weapon \n3.) Add Gold \n4.) Remove Gold \n5.) Shop \nQ.) Quit");
 
                 //Get input
                 choice = Console.ReadLine();
@@ -86,6 +84,13 @@ namespace ConsoleApp8
                     RemoveGold(removedGold);
 
                 }
+                else if (choice == "5")
+                {
+
+                    Shop(choice);
+
+                }
+
 
             }
 
@@ -329,6 +334,7 @@ namespace ConsoleApp8
             currentDamage = 0;
             currentDamage += damage;
             inventoryWeight = 0;
+            inventoryWeight += potionWeight;
             inventoryWeight += armorWeight;
             inventoryWeight += weaponWeight;
         }
@@ -338,10 +344,67 @@ namespace ConsoleApp8
             currentDefense = 0;
             currentDefense += defense;
             inventoryWeight = 0;
+            inventoryWeight += potionWeight;
             inventoryWeight += weaponWeight;
             inventoryWeight += armorWeight;
         }
 
+        public void Shop(string choice)
+        {
+            Console.WriteLine("Welcome to the SHOP (Supposedly Haggling Obnoxious Players)");
+            Console.WriteLine("What would you like to buy?");
+            Console.WriteLine("1.) Potion \n2.) *Null* \n3.) *Null* \n");
+            choice = Console.ReadLine();
+
+            if (choice == "1")
+            {
+                Console.WriteLine("Each Potion costs 250 Gold.\nWould you like to buy one?");
+                Console.WriteLine("Y/N?");
+                choice = Console.ReadLine();
+
+                if (choice == "Y" || choice == "y")
+                {
+                    if (gold < 250)
+                    {
+                        Console.WriteLine("You're short on gold you pleb.");
+                        Console.WriteLine("Git out of mah shop.\n");
+                        Console.ReadKey();
+
+                    }
+                    else
+                    {
+                        gold -= 250;
+                        inventoryWeight += potionWeight;
+
+                        if (inventoryWeight > maxInventoryWeight)
+                        {
+                            Console.WriteLine("This would exceed your max carry limit! So you throw the potion away. (What a waste of money.)");
+                            inventoryWeight -= potionWeight;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You successfully bought one potion.\n");
+                        }
+
+
+                    }
+                                  
+                }
+                else if (choice == "N" || choice == "n")
+                {
+                    Console.WriteLine("Then git out of mah shop.\n");
+                    Console.ReadKey();
+
+                }
+
+            }
+            else if (choice == "2")
+            {
+
+
+            }
+
+        }
 
     }
 }
