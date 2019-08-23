@@ -15,9 +15,10 @@ namespace ConsoleApp8
         int currentDefense = 0;
         int weaponWeight = 0;
         int armorWeight = 0;
-        int potionWeight = 2;
+        int potionWeight = 0;
         int inventoryWeight = 0;
         int maxInventoryWeight = 50;
+        int potionHeld = 0;
 
         public void Menu()
         {
@@ -26,8 +27,8 @@ namespace ConsoleApp8
             {
                 // Display Menu
                 Console.WriteLine("Inventory Menu");
-                Console.WriteLine("Money: " + gold + "    Weapon Damage: " + currentDamage + "    Armor Defense: " + currentDefense + "    Weight: " + inventoryWeight + " / " + maxInventoryWeight);
-                Console.WriteLine("1.) Equip Weapon \n2.) Unequip Weapon \n3.) Add Gold \n4.) Remove Gold \n5.) Shop \nQ.) Quit");
+                Console.WriteLine("Money: " + gold + "    Weapon Damage: " + currentDamage + "    Armor Defense: " + currentDefense + "    Weight: " + inventoryWeight + " / " + maxInventoryWeight + "    Potions Held: " + potionHeld);
+                Console.WriteLine("1.) Equip Weapon \n2.) Unequip Weapon \n3.) Add Gold \n4.) Remove Gold \n5.) Shop \n6.) Drink Potion \nQ.) Quit");
 
                 //Get input
                 choice = Console.ReadLine();
@@ -67,7 +68,25 @@ namespace ConsoleApp8
                 }
                 else if (choice == "2")
                 {
-                    UnequipWeapon();
+                    string subChoice = "";
+                    Console.WriteLine("What would you like to remove?");
+                    Console.WriteLine("1.) Weapon    2.) Armor    0.)Back");
+                    choice = Console.ReadLine();
+
+                    if (choice == "1")
+                    {
+                        UnequipWeapon();
+                    }
+                    else if (choice == "2")
+                    {
+                        UnequipArmor();
+                    }
+                    else if (choice != "0")
+                    {
+
+
+                    }
+
 
                 }
                 else if (choice == "3")
@@ -86,12 +105,14 @@ namespace ConsoleApp8
                 }
                 else if (choice == "5")
                 {
-
                     Shop(choice);
+                }
+                else if (choice == "6")
+                {
+                    Console.WriteLine("You drank one potion... it did nothing.");
+                    potionHeld -= 1;
 
                 }
-
-
             }
 
 
@@ -374,6 +395,7 @@ namespace ConsoleApp8
                     else
                     {
                         gold -= 250;
+                        potionWeight = 2;
                         inventoryWeight += potionWeight;
 
                         if (inventoryWeight > maxInventoryWeight)
@@ -384,6 +406,7 @@ namespace ConsoleApp8
                         else
                         {
                             Console.WriteLine("You successfully bought one potion.\n");
+                            potionHeld += 1;
                         }
 
 
