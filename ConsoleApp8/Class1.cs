@@ -28,7 +28,7 @@ namespace ConsoleApp8
             {
                 // Display Menu
                 Console.WriteLine("Inventory Menu");
-                Console.WriteLine("Money: " + gold + "    Weapon Damage: " + currentDamage + "    Armor Defense: " + currentDefense + "    Weight: " +inventoryWeight);
+                Console.WriteLine("Money: " + gold + "    Weapon Damage: " + currentDamage + "    Armor Defense: " + currentDefense + "    Weight: " + inventoryWeight + " / "+ maxInventoryWeight);
                 Console.WriteLine("1.) Equip Weapon    \n2.) Unequip Weapon    \n3.) Add Gold    \n4.) Remove Gold    \nQ.) Quit");
 
                 //Get input
@@ -42,7 +42,7 @@ namespace ConsoleApp8
                     Console.WriteLine("What would you like to change?");
                     Console.WriteLine("1.) Weapon    2.) Armor    0.)Back");
                     choice = Console.ReadLine();
-                    if(choice == "1")
+                    if (choice == "1")
                     {
                         Console.WriteLine("Here are your weapon choices.");
                         Console.WriteLine("1.) Great Sword    2.) Sword    3.) Dagger    4.) Spear    5.) Bow    0.) Back");
@@ -51,7 +51,7 @@ namespace ConsoleApp8
                         EquipWeapon(subChoice);
 
                     }
-                    else if(choice == "2")
+                    else if (choice == "2")
                     {
                         Console.WriteLine("Here are your armor choices.");
                         Console.WriteLine("1.) Leather    2.) Chain    3.) Iron   4.) Cloth    0.) Back");
@@ -60,7 +60,7 @@ namespace ConsoleApp8
                         EquipArmor(subChoice);
 
                     }
-                    else if(choice != "0")
+                    else if (choice != "0")
                     {
 
 
@@ -98,12 +98,12 @@ namespace ConsoleApp8
             {
                 damage = 75;
                 weaponWeight = 35;
-                WeaponWeightFix();                                           // Makes it so Weight doesn't stack or lose with other equipment weights.
+                WeaponWeightFix();                                                           // Makes it so Weight doesn't stack or lose with other equipment weights.
 
-                if (inventoryWeight > maxInventoryWeight)                    // If Weight exceeds max
+                if (inventoryWeight > maxInventoryWeight)                                    // If Weight exceeds max
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");           
-                    inventoryWeight -= weaponWeight;                        // Reverts changes
+                    Console.WriteLine("This would exceed your max carry limit!");            // Can't Equip Weapon
+                    inventoryWeight -= weaponWeight;                                         // Reverts changes
                     currentDamage -= damage;
                 }
                 else
@@ -179,14 +179,14 @@ namespace ConsoleApp8
                     Console.WriteLine("You have spawned in the Bow.");
                 }
             }
-            else if(subChoice != "0")
+            else if (subChoice != "0")
             {
                 EquipWeapon(subChoice);
 
             }
             Console.WriteLine("Your current weapon does " + currentDamage + " damage.\n");
 
-        } 
+        }
 
         public void EquipArmor(string subChoice)
         {
