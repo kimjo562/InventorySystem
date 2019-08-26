@@ -61,7 +61,7 @@ namespace ConsoleApp8
         {
             get                                                 // This will grab value set.
             {
-                return _xp;
+                return _xp;                                     // Uses Value and then returns the Value after running the set{}
 
             }
             set                                                 // Will send whatever it needs to be sent.
@@ -87,3 +87,6 @@ namespace ConsoleApp8
 
     }
 }
+
+
+

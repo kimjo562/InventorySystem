@@ -9,7 +9,7 @@ namespace ConsoleApp8
     class Inventory
     {
         float gold = 0.00f;
-        int _itemDamage = 5;                                                                                         // Automatically makes it private if not declared (int damage = 5;  also == private int damage =5;)
+        int _itemDamage = 5;                                                                                      // Automatically makes it private if not declared (int damage = 5;  also == private int damage =5;)
         int currentDamage = 5;
         int _itemDefense = 0;
         int currentDefense = 0;
@@ -20,7 +20,21 @@ namespace ConsoleApp8
         int _maxInventoryWeight = 50;
         int _potionHeld = 0;
 
-        public int ItemDamage()                                                                                  // Returns the damage our weapons deals.
+        private AttackItem GreatSword = new AttackItem("Great Sword", 75, 35);
+        private AttackItem Sword = new AttackItem("Sword", 25, 10);
+        private AttackItem Dagger = new AttackItem("Dagger", 20, 5);
+        private AttackItem Spear = new AttackItem("Spear", 30, 15);
+        private AttackItem Bow = new AttackItem("Bow", 25, 10);
+        private AttackItem[] weapons= new AttackItem[10];
+
+        public Inventory()
+        {
+            AttackItem[] weaponBag = { GreatSword, Sword, Dagger, Spear, Bow };
+            weapons = weaponBag;
+
+        }
+
+        public int ItemDamage()                                                                                   // Returns the damage our weapons deals.
         {
             return _itemDamage;
 
@@ -57,7 +71,6 @@ namespace ConsoleApp8
                         Console.WriteLine("Here are your weapon choices.");
                         Console.WriteLine("1.) Great Sword    2.) Sword    3.) Dagger    4.) Spear    5.) Bow    0.) Back");
                         subChoice = Console.ReadLine();
-
                         EquipWeapon(subChoice);
 
                     }
@@ -141,6 +154,7 @@ namespace ConsoleApp8
         {
             if (subChoice == "1")
             {
+
                 _itemDamage = 75;
                 _weaponWeight = 35;
                 WeaponWeightFix();                                                           // Makes it so Weight doesn't stack or lose with other equipment weights.
@@ -457,3 +471,4 @@ namespace ConsoleApp8
 
     }
 }
+
