@@ -13,6 +13,10 @@ namespace ConsoleApp8
         private int _level = 1;
         private int[] _requiredXP = { 100, 300, 800, 1500 };                // In slot 1 or (to level up to level 2) it requires 100 XP. slot 2 (300 XP for Level 3 ect.)
 
+        private Inventory inventory = new Inventory();                      // Creating an inventory for each character made.
+
+
+
         protected int _health = 100;                                        // Can be changed by inherited class. (protected int)
         protected int _mana = 100;                                          // (private int) cannot be change by inherited class.
         protected int _strength = 5;
@@ -43,6 +47,12 @@ namespace ConsoleApp8
             Console.WriteLine("Dexterity: " + _dexterity);
             Console.WriteLine("Wisdom: " + _wisdom);
             Console.WriteLine();
+
+        }
+
+        public void openInventory()
+        {
+            inventory.Menu();
 
         }
 

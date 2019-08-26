@@ -49,6 +49,7 @@ namespace InventorySystem
             }
 
             player.Print();
+            player.openInventory();
 
             Hunter yeetman = new Hunter("Yeetman");
             Wizard justyes = new Wizard("Yes");
