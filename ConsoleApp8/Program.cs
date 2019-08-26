@@ -13,14 +13,45 @@ namespace InventorySystem
         {
             //     Inventory inventory = new Inventory();
             //     inventory.Menu();
+            string name = "";
+            string choice = "";
 
+            Console.Write("Enter the name of Party Member 1: ");
+            name = Console.ReadLine();
+            while (choice != "1" && choice != "2" && choice != "3")
+            {
+                Console.WriteLine("Choose a Job");
+                Console.WriteLine("---------------");
+                Console.WriteLine("1.) Knight");
+                Console.WriteLine("2.) Hunter");
+                Console.WriteLine("3.) Wizard");
+                choice = Console.ReadLine();
+            }
+            Character player;
+            if (choice == "1")
+            {
+                player = new Knight(name);                                                    // This will pass the string Knight from Character Class.
 
-            Character player = new Character("OiBoi");
-            Console.WriteLine("Hello " + player.Name()+ ", you need to find something.\n");
+            }
+            else if (choice == "2")
+            {
+                player = new Hunter(name);                                                    // This will pass the string Hunter from Character Class.
+
+            }
+            else if (choice == "3")
+            {
+                player = new Wizard(name);                                                    // This will pass the string Wizard from Character Class.
+
+            }
+            else
+            {
+                player = new Character(name);
+            }
+
             player.Print();
 
-            Character yeetman = new Character("Yeetman");
-            Character justyes = new Character("Yes");
+            Hunter yeetman = new Hunter("Yeetman");
+            Wizard justyes = new Wizard("Yes");
             Console.WriteLine(" \n");
             justyes.Print();
             Console.WriteLine(" \n");
@@ -48,9 +79,6 @@ namespace InventorySystem
             player.Experience += 150;
             player.Experience += 150;
             player.Experience += 150;
-
-
-
 
 
             int[] testArray = new int[4];                                                           // Arrays start at 0(slot)

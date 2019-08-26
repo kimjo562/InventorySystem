@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Wizard.cs" />
+    <Compile Include="Hunter.cs" />
+    <Compile Include="Knight.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Program.cs" />
