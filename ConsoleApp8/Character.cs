@@ -43,6 +43,7 @@ namespace ConsoleApp8
             Console.WriteLine("Mana: " + _mana + "\n");
             Console.WriteLine("Stats");
             Console.WriteLine("-----------------------------------");
+            Console.WriteLine("Combat Damage: " + (_strength + inventory.ItemDamage()));
             Console.WriteLine("Strength: " + _strength);
             Console.WriteLine("Dexterity: " + _dexterity);
             Console.WriteLine("Wisdom: " + _wisdom);

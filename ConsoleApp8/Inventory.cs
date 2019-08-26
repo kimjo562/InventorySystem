@@ -31,10 +31,6 @@ namespace ConsoleApp8
 
         }
 
-
-
-
-
         public void Menu()
         {
             string choice = "";

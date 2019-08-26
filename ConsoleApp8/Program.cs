@@ -26,6 +26,7 @@ namespace InventorySystem
                 Console.WriteLine("2.) Hunter");
                 Console.WriteLine("3.) Wizard");
                 choice = Console.ReadLine();
+                Console.WriteLine();
             }
             Character player;
             if (choice == "1")
@@ -48,14 +49,9 @@ namespace InventorySystem
                 player = new Character(name);
             }
 
-            player.Print();
-
-            Hunter yeetman = new Hunter("Yeetman");
+            Knight yeetman = new Knight("Yeetman");
             Wizard justyes = new Wizard("Yes");
-            Console.WriteLine(" \n");
-            justyes.Print();
-            Console.WriteLine(" \n");
-            yeetman.Print();
+
 
             choice = "";
             while(choice != "0")
@@ -67,19 +63,23 @@ namespace InventorySystem
                 Console.WriteLine("3.) " + yeetman.Name());
                 Console.WriteLine("0.) Exit");
                 choice = Console.ReadLine();
+                Console.WriteLine();
 
                 if (choice == "1")
                 {
+                    player.Print();
                     player.openInventory();
 
                 }
                 else if (choice == "2")
                 {
+                    justyes.Print();
                     justyes.openInventory();
 
                 }
                 else if (choice == "3")
                 {
+                    yeetman.Print();
                     yeetman.openInventory();
 
                 }
