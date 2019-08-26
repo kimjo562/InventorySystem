@@ -49,7 +49,6 @@ namespace InventorySystem
             }
 
             player.Print();
-            player.openInventory();
 
             Hunter yeetman = new Hunter("Yeetman");
             Wizard justyes = new Wizard("Yes");
@@ -58,22 +57,37 @@ namespace InventorySystem
             Console.WriteLine(" \n");
             yeetman.Print();
 
+            choice = "";
+            while(choice != "0")
+            {
+                Console.WriteLine("Whose inventory?");
+                Console.WriteLine("---------------");
+                Console.WriteLine("1.) " + player.Name());
+                Console.WriteLine("2.) " + justyes.Name());
+                Console.WriteLine("3.) " + yeetman.Name());
+                Console.WriteLine("0.) Exit");
+                choice = Console.ReadLine();
 
+                if (choice == "1")
+                {
+                    player.openInventory();
+
+                }
+                else if (choice == "2")
+                {
+                    justyes.openInventory();
+
+                }
+                else if (choice == "3")
+                {
+                    yeetman.openInventory();
+
+                }
+            }
+                  
             player.Experience = 25;
             player.Experience = player.Experience + 250;                                             // Examples of the different ways to add Experience.
             player.Experience += 75;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
-            player.Experience += 150;
             player.Experience += 150;
             player.Experience += 150;
             player.Experience += 150;

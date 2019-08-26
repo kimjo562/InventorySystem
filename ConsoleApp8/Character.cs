@@ -52,7 +52,7 @@ namespace ConsoleApp8
 
         public void openInventory()
         {
-            inventory.Menu();
+            inventory.Menu();                                   // OPens the inventory of the player.
 
         }
 
