@@ -396,20 +396,17 @@ namespace ConsoleApp8
                     if (gold > 250 * potionAmount)
                     {
                         gold -= 250 * potionAmount;                                     // How many you want to buy = respective price.
-                        Console.WriteLine("You have bought " + potionAmount + " and it costed you " + potionAmount * 250 + " gold.\n");
-
-                        gold -= 250 * potionAmount;
                         potionWeight = potionAmount *2;
                         inventoryWeight += potionWeight;
 
                         if (inventoryWeight > maxInventoryWeight)
                         {
-                            Console.WriteLine("This would exceed your max carry limit! So you throw the potion away. (What a waste of money.)");
+                            Console.WriteLine("This would exceed your max carry limit! So you throw the potion away. (What a waste of money.)\n");
                             inventoryWeight -= potionWeight;
                         }
                         else
                         {
-                            Console.WriteLine("You successfully bought " + potionAmount + " potion.\n");
+                            Console.WriteLine("You have bought " + potionAmount + " and it costed you " + potionAmount * 250 + " gold.\n");
                             potionHeld += potionAmount;
                         }
 
