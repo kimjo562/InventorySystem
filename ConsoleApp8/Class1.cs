@@ -382,82 +382,63 @@ namespace ConsoleApp8
         {
             Console.WriteLine("Welcome to the SHOP (Supposedly Haggling Obnoxious Players)");
             Console.WriteLine("What would you like to buy?");
-            Console.WriteLine("1.) Potion \n2.) *Null* \n3.) *Null* \n");
+            Console.WriteLine("1.) Potion \n2.) *Null* \n3.) *Null* \n0.) Back");
             choice = Console.ReadLine();
 
             if (choice == "1")
             {
-                Console.WriteLine("Would you like to buy in Bulk or just one?");
-                Console.WriteLine("1.) Single Potion \n2.) In Bulk");
-                choice = Console.ReadLine();
 
                 if (choice == "1")
                 {
-                    Console.WriteLine("Each Potion costs 250 Gold.\nWould you like to buy one?");
-                    Console.WriteLine("Y/N?");
-                    choice = Console.ReadLine();
+                    Console.WriteLine("How many would you like to buy?");
+                    int potionAmount = Convert.ToInt32(Console.ReadLine());
 
-                    if (choice == "Y" || choice == "y")
+                    if (gold > 250 * potionAmount)
                     {
-                        if (gold < 250)
-                        {
-                            Console.WriteLine("You're short on gold you pleb.");
-                            Console.WriteLine("Git out of mah shop.\n");
-                            Console.ReadKey();
+                        gold -= 250 * potionAmount;                                     // How many you want to buy = respective price.
+                        Console.WriteLine("You have bought " + potionAmount + " and it costed you " + potionAmount * 250 + " gold.\n");
 
+                        gold -= 250 * potionAmount;
+                        potionWeight = potionAmount *2;
+                        inventoryWeight += potionWeight;
+
+                        if (inventoryWeight > maxInventoryWeight)
+                        {
+                            Console.WriteLine("This would exceed your max carry limit! So you throw the potion away. (What a waste of money.)");
+                            inventoryWeight -= potionWeight;
                         }
                         else
                         {
-                            gold -= 250;
-                            potionWeight = 2;
-                            inventoryWeight += potionWeight;
-
-                            if (inventoryWeight > maxInventoryWeight)
-                            {
-                                Console.WriteLine("This would exceed your max carry limit! So you throw the potion away. (What a waste of money.)");
-                                inventoryWeight -= potionWeight;
-                            }
-                            else
-                            {
-                                Console.WriteLine("You successfully bought one potion.\n");
-                                potionHeld += 1;
-                            }
-
-
+                            Console.WriteLine("You successfully bought " + potionAmount + " potion.\n");
+                            potionHeld += potionAmount;
                         }
 
                     }
-                }
-                else if (choice == "N" || choice == "n")
-                {
-                    Console.WriteLine("Then git out of mah shop.\n");
-                    Console.ReadKey();
+                    else if (gold < 250 * potionAmount)
+                    {
+                        Console.WriteLine("You're short on gold you pleb.");
+                        Console.WriteLine("Git out of mah shop.\n");
+                        Console.ReadKey();
+
+                    }
 
                 }
 
             }
-            else if (choice == "2")
+            else if(choice == "2")
             {
-                Console.WriteLine("How many would you like to buy?");
-                int potionAmount = Convert.ToInt32(Console.ReadLine());
-
-                if (gold > 250 * potionAmount)
-                {
-                    gold -= 250 * potionAmount;                                     // How many you want to buy = respective price.
-                    Console.WriteLine("You have bought " + potionAmount + " and it costed you " + potionAmount * 250 + " gold.");
-                }
-
-                
 
 
             }
+            else if(choice == "3")
+            {
 
-            /*else if (choice == "2")
-              {
 
-
-              }
-            */
+            }
+            else if(choice != "0")
+            {
+                // Go back to the Main Menu
+            }
         }
 
     }
