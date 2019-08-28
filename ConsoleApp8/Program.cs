@@ -26,6 +26,7 @@ namespace InventorySystem
             encounter.Print();
 
             encounter.BeginRound();
+            encounter.Start();
             encounter.Print();
 
             Console.ReadKey();

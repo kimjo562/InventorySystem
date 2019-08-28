@@ -53,5 +53,58 @@ namespace ConsoleApp8
             }
 
         }
+
+        public void Start()
+        {
+            Console.WriteLine("\nEncounter Start.");
+            bool stillFighting = true;
+            while(stillFighting)
+            {
+                //check if team 1 is alive
+                bool team1Alive = false;
+                for (int i = 0; i < _goodMonster.Length ; i++)
+                {
+                    Monster currentMonster = _goodMonster[i];
+                    if(currentMonster.Health > 0)
+                    {
+                        team1Alive = true;
+                        break;
+                    }
+                    else if (currentMonster.Health <=0)
+                    {
+                        team1Alive = false;
+                    }
+                }
+                //check if team 2 is alive
+                bool team2Alive = false;
+                for (int i = 0; i < _badMonster.Length; i++)
+                {
+                    Monster currentMonster = _badMonster[i];
+                    if (currentMonster.Health > 0)
+                    {
+                        team2Alive = true;
+                        break;
+                    }
+                    else if (currentMonster.Health <= 0)
+                    {
+                        team2Alive = false;
+                    }
+                }
+                //if both teams are alive
+                if (team1Alive && team2Alive)
+                {
+                    //fight
+                    stillFighting = true;
+                    BeginRound();
+                }
+                else
+                {
+                    //stop
+                    stillFighting = false;
+                }
+                Print();
+            }
+
+        }
     }
 }
