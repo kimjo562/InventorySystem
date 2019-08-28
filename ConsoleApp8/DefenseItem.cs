@@ -19,12 +19,19 @@ namespace ConsoleApp8
             }
 
         }
+        public int Weight
+        {
 
-        public DefenseItem(string newName, int newDefense, int newWeight)
+            get
+            {
+                return _weight;
+            }
+        }
+        public DefenseItem(string newName, int _itemDefense, int _armorWeight)
         {
             _name = newName;
-            _defense = newDefense;
-            _weight = newWeight;
+            _defense = _itemDefense;
+            _weight = _armorWeight;
 
 
         }

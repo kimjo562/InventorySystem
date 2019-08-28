@@ -18,11 +18,19 @@ namespace ConsoleApp8
            
 
         }
-        public AttackItem(string newName, int newDamage, int newWeight)
+        public int Weight
+        {
+
+            get
+            {
+                return _weight;
+            }
+        }
+        public AttackItem(string newName, int _itemDamage, int _weaponWeight)
         {
             _name = newName;
-            _damage = newDamage;
-            _weight = newWeight;
+            _damage = _itemDamage;
+            _weight = _weaponWeight;
 
 
         }

@@ -27,10 +27,21 @@ namespace ConsoleApp8
         private AttackItem Bow = new AttackItem("Bow", 25, 10);
         private AttackItem[] weapons= new AttackItem[10];
 
+        private DefenseItem LeatherArmor = new DefenseItem("Leather Armor", 10, 10);
+        private DefenseItem ChainArmor = new DefenseItem("Chain Armor", 25, 10);
+        private DefenseItem IronArmor = new DefenseItem("Iron Armor", 20, 5);
+        private DefenseItem ClothArmor = new DefenseItem("Cloth Armor", 30, 15);
+        private DefenseItem[] armor = new DefenseItem[10];
+
+
+
         public Inventory()
         {
             AttackItem[] weaponBag = { GreatSword, Sword, Dagger, Spear, Bow };
             weapons = weaponBag;
+
+            DefenseItem[] armorBag = { LeatherArmor, ChainArmor, IronArmor, ClothArmor };
+            armor = armorBag;
 
         }
 
@@ -153,10 +164,9 @@ namespace ConsoleApp8
         public void EquipWeapon(string subChoice)
         {
             if (subChoice == "1")
-            {
-
-                _itemDamage = 75;
-                _weaponWeight = 35;
+            {           
+                _itemDamage = GreatSword.Damage;
+                _weaponWeight = GreatSword.Weight;
                 WeaponWeightFix();                                                           // Makes it so Weight doesn't stack or lose with other equipment weights.
 
                 if (_inventoryWeight > _maxInventoryWeight)                                    // If Weight exceeds max
@@ -173,8 +183,8 @@ namespace ConsoleApp8
             }
             else if (subChoice == "2")
             {
-                _itemDamage = 25;
-                _weaponWeight = 10;
+                _itemDamage = Sword.Damage;
+                _weaponWeight = Sword.Weight;
                 WeaponWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
@@ -191,8 +201,8 @@ namespace ConsoleApp8
             }
             else if (subChoice == "3")
             {
-                _itemDamage = 20;
-                _weaponWeight = 5;
+                _itemDamage = Dagger.Damage;
+                _weaponWeight = Dagger.Weight;
                 WeaponWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
@@ -209,8 +219,8 @@ namespace ConsoleApp8
             }
             else if (subChoice == "4")
             {
-                _itemDamage = 30;
-                _weaponWeight = 15;
+                _itemDamage = Spear.Damage;
+                _weaponWeight = Spear.Weight;
                 WeaponWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
@@ -227,8 +237,8 @@ namespace ConsoleApp8
             }
             else if (subChoice == "5")
             {
-                _itemDamage = 25;
-                _weaponWeight = 10;
+                _itemDamage = Bow.Damage;
+                _weaponWeight = Bow.Weight;
                 WeaponWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
@@ -256,8 +266,8 @@ namespace ConsoleApp8
         {
             if (subChoice == "1")
             {
-                _itemDefense = 10;
-                _armorWeight = 10;
+                _itemDefense = LeatherArmor.Defense;
+                _armorWeight = LeatherArmor.Weight;
                 ArmorWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
@@ -274,8 +284,8 @@ namespace ConsoleApp8
             }
             else if (subChoice == "2")
             {
-                _itemDefense = 15;
-                _armorWeight = 15;
+                _itemDefense = ChainArmor.Defense;
+                _armorWeight = ChainArmor.Weight;
                 ArmorWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
@@ -292,8 +302,8 @@ namespace ConsoleApp8
             }
             else if (subChoice == "3")
             {
-                _itemDefense = 20;
-                _armorWeight = 20;
+                _itemDefense = IronArmor.Defense;
+                _armorWeight = IronArmor.Weight;
                 ArmorWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
@@ -310,8 +320,8 @@ namespace ConsoleApp8
             }
             else if (subChoice == "4")
             {
-                _itemDefense = 5;
-                _armorWeight = 5;
+                _itemDefense = ClothArmor.Defense;
+                _armorWeight = ClothArmor.Weight;
                 ArmorWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
