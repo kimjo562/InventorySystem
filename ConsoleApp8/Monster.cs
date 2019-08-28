@@ -70,18 +70,48 @@ namespace ConsoleApp8
 
         public void Fight(Monster target)
         {
+            if(Health <= 0)
+            { 
+                return;
+            }
+
             int damage = GetDamage;
             //target's health - this monster's damage
             Console.WriteLine(GetName + " attacks! " + target.GetName + " takes " + _damage + " damage.");
             // Subtracts the damage from the target monster's health
             target._health -= damage;
-
             Console.WriteLine(target.GetName + " has " + target._health + " health.\n");
 
-            Console.WriteLine(target.GetName + " attacks! " + GetName + " takes " + target.GetDamage + " damage.");
-            _health -= target.GetDamage;
+        }
 
-            Console.WriteLine(GetName + " has " + _health + " health.\n");
+        public void Fight(Monster[] targets)
+        {
+            if (Health <= 0)
+            {
+                return;
+            }
+
+            bool validInput = false;
+            while(!validInput)
+            {
+                int choice = 0;
+                Console.WriteLine("\nWho will " + GetName + " fight? ");
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    Console.WriteLine((i + 1) + ": " + targets[i].GetName);
+
+                }
+                choice = Convert.ToInt32(Console.ReadLine());               // Grab Input
+
+                if(choice >= 0 && choice <= targets.Length)
+                {
+                    validInput = true;
+                    //Fight the Chosen Target
+                    Console.WriteLine("\nFight " + targets[choice - 1].GetName);                  //checking if it works
+                    Console.WriteLine();
+                    Fight(targets[choice - 1]);
+                }
+            }
 
         }
     }

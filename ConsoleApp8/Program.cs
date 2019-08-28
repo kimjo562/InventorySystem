@@ -11,17 +11,27 @@ namespace InventorySystem
     {
         static void Main(string[] args)
         {
-            Monster slime = new Monster("Slime", 50 ,10);
+            // Created a Bunch of Monsters
+            Monster slime = new Monster("Slime", 50, 10);
             Monster rat = new Monster("Rat", 25, 5);
+            Monster zombie = new Monster("Zombie", 30, 15);
+            Monster skeleton = new Monster("Skeleton", 35, 10);
 
-            slime.Print();
-            rat.Print();
+            // Create two arrays and palce the monsters into them
+            Monster[] goodTeam = { rat, slime };
+            Monster[] badTeam = { zombie, skeleton };
+
+            //Create an enoutner for the two arrays of monsters
+            Encounter encounter = new Encounter(goodTeam, badTeam);
+            encounter.Print();
+
+            encounter.BeginRound();
+            encounter.Print();
 
             Console.ReadKey();
-            Console.WriteLine();
 
-            rat.Fight(slime);
-            Console.ReadKey();
+
+
             return;
 
 
@@ -68,7 +78,7 @@ namespace InventorySystem
 
 
             choice = "";
-            while(choice != "0")
+            while (choice != "0")
             {
                 Console.WriteLine("Whose inventory?");
                 Console.WriteLine("---------------");
@@ -98,7 +108,7 @@ namespace InventorySystem
 
                 }
             }
-                  
+
             player.Experience = 25;
             player.Experience = player.Experience + 250;                                             // Examples of the different ways to add Experience.
             player.Experience += 75;
