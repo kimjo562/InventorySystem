@@ -32,7 +32,6 @@ namespace ConsoleApp8
             _damage = _itemDamage;
             _weight = _weaponWeight;
 
-
         }
 
 

@@ -11,6 +11,20 @@ namespace InventorySystem
     {
         static void Main(string[] args)
         {
+            Monster slime = new Monster("Slime", 50 ,10);
+            Monster rat = new Monster("Rat", 25, 5);
+
+            slime.Print();
+            rat.Print();
+
+            Console.ReadKey();
+            Console.WriteLine();
+
+            rat.Fight(slime);
+            Console.ReadKey();
+            return;
+
+
             //     Inventory inventory = new Inventory();
             //     inventory.Menu();
             string name = "";

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttackItem.cs" />
+    <Compile Include="Monster.cs" />
     <Compile Include="DefenseItem.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Wizard.cs" />

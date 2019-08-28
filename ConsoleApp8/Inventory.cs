@@ -9,7 +9,7 @@ namespace ConsoleApp8
     class Inventory
     {
         float gold = 0.00f;
-        int _itemDamage = 5;                                                                                      // Automatically makes it private if not declared (int damage = 5;  also == private int damage =5;)
+        int _itemDamage = 5;                                                       // Automatically makes it private if not declared (int damage = 5;  also == private int damage =5;)
         int currentDamage = 5;
         int _itemDefense = 0;
         int currentDefense = 0;
@@ -19,31 +19,27 @@ namespace ConsoleApp8
         int _inventoryWeight = 0;
         int _maxInventoryWeight = 50;
         int _potionHeld = 0;
-
-        private AttackItem GreatSword = new AttackItem("Great Sword", 75, 35);
-        private AttackItem Sword = new AttackItem("Sword", 25, 10);
-        private AttackItem Dagger = new AttackItem("Dagger", 20, 5);
-        private AttackItem Spear = new AttackItem("Spear", 30, 15);
-        private AttackItem Bow = new AttackItem("Bow", 25, 10);
-        private AttackItem[] weapons= new AttackItem[10];
-
-        private DefenseItem LeatherArmor = new DefenseItem("Leather Armor", 10, 10);
-        private DefenseItem ChainArmor = new DefenseItem("Chain Armor", 25, 10);
-        private DefenseItem IronArmor = new DefenseItem("Iron Armor", 20, 5);
-        private DefenseItem ClothArmor = new DefenseItem("Cloth Armor", 30, 15);
-        private DefenseItem[] armor = new DefenseItem[10];
-
+        private AttackItem[] _weaponList = new AttackItem[10];                      // [10] Inventory Limit
+        private DefenseItem[] _armorList = new DefenseItem[10];                     // [10] Inventory Limit
 
 
         public Inventory()
         {
-            AttackItem[] weaponBag = { GreatSword, Sword, Dagger, Spear, Bow };
-            weapons = weaponBag;
+            //Populate the weapon list
 
-            DefenseItem[] armorBag = { LeatherArmor, ChainArmor, IronArmor, ClothArmor };
-            armor = armorBag;
+            _weaponList[0] = new AttackItem("Great Sword", 75, 35);
+            _weaponList[1] = new AttackItem("Sword", 25, 10);
+            _weaponList[2] = new AttackItem("Dagger", 20, 5);
+            _weaponList[3] = new AttackItem("Spear", 30, 15);
+            _weaponList[4] = new AttackItem("Bow", 25, 10);
 
-        }
+            //Populate the armor list
+            _armorList[0] = new DefenseItem("Leather Armor", 10, 10);
+            _armorList[1] = new DefenseItem("Chain Armor", 25, 10);
+            _armorList[2] = new DefenseItem("Iron Armor", 20, 5);
+            _armorList[3] = new DefenseItem("Cloth Armor", 30, 15);
+
+    }
 
         public int ItemDamage()                                                                                   // Returns the damage our weapons deals.
         {
@@ -82,6 +78,7 @@ namespace ConsoleApp8
                         Console.WriteLine("Here are your weapon choices.");
                         Console.WriteLine("1.) Great Sword    2.) Sword    3.) Dagger    4.) Spear    5.) Bow    0.) Back");
                         subChoice = Console.ReadLine();
+
                         EquipWeapon(subChoice);
 
                     }
@@ -164,17 +161,14 @@ namespace ConsoleApp8
         public void EquipWeapon(string subChoice)
         {
             if (subChoice == "1")
-            {           
-                _itemDamage = GreatSword.Damage;
-                _weaponWeight = GreatSword.Weight;
+            {
+                _itemDamage = _weaponList[0].Damage;
+                _weaponWeight = _weaponList[0].Weight;
                 WeaponWeightFix();                                                           // Makes it so Weight doesn't stack or lose with other equipment weights.
 
-                if (_inventoryWeight > _maxInventoryWeight)                                    // If Weight exceeds max
+                if (_inventoryWeight > _maxInventoryWeight)                                    // If Weight exceeds max, revert
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");            // Can't Equip Weapon
-                    Console.WriteLine("You unequipped your weapon.");
-                    _inventoryWeight -= _weaponWeight;                                         // Reverts changes
-                    currentDamage -= _itemDamage;
+                    WeightExceedWeapon();
                 }
                 else
                 {
@@ -183,16 +177,13 @@ namespace ConsoleApp8
             }
             else if (subChoice == "2")
             {
-                _itemDamage = Sword.Damage;
-                _weaponWeight = Sword.Weight;
+                _itemDamage = _weaponList[1].Damage;
+                _weaponWeight = _weaponList[1].Weight;
                 WeaponWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");
-                    Console.WriteLine("You unequipped your weapon.");
-                    _inventoryWeight -= _weaponWeight;
-                    currentDamage -= _itemDamage;
+                    WeightExceedWeapon();
                 }
                 else
                 {
@@ -201,16 +192,13 @@ namespace ConsoleApp8
             }
             else if (subChoice == "3")
             {
-                _itemDamage = Dagger.Damage;
-                _weaponWeight = Dagger.Weight;
+                _itemDamage = _weaponList[2].Damage;
+                _weaponWeight = _weaponList[2].Weight;
                 WeaponWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");
-                    Console.WriteLine("You unequipped your weapon.");
-                    _inventoryWeight -= _weaponWeight;
-                    currentDamage -= _itemDamage;
+                    WeightExceedWeapon();
                 }
                 else
                 {
@@ -219,16 +207,13 @@ namespace ConsoleApp8
             }
             else if (subChoice == "4")
             {
-                _itemDamage = Spear.Damage;
-                _weaponWeight = Spear.Weight;
+                _itemDamage = _weaponList[3].Damage;
+                _weaponWeight = _weaponList[3].Weight;
                 WeaponWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");
-                    Console.WriteLine("You unequipped your weapon.");
-                    _inventoryWeight -= _weaponWeight;
-                    currentDamage -= _itemDamage;
+                    WeightExceedWeapon();
                 }
                 else
                 {
@@ -237,16 +222,13 @@ namespace ConsoleApp8
             }
             else if (subChoice == "5")
             {
-                _itemDamage = Bow.Damage;
-                _weaponWeight = Bow.Weight;
+                _itemDamage = _weaponList[4].Damage;
+                _weaponWeight = _weaponList[4].Weight;
                 WeaponWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");
-                    Console.WriteLine("You unequipped your weapon.");
-                    _inventoryWeight -= _weaponWeight;
-                    currentDamage -= _itemDamage;
+                    WeightExceedWeapon();
                 }
                 else
                 {
@@ -266,16 +248,13 @@ namespace ConsoleApp8
         {
             if (subChoice == "1")
             {
-                _itemDefense = LeatherArmor.Defense;
-                _armorWeight = LeatherArmor.Weight;
+                _itemDefense = _armorList[0].Defense;
+                _armorWeight = _armorList[0].Weight;
                 ArmorWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");
-                    Console.WriteLine("You unequipped your armor.");
-                    _inventoryWeight -= _armorWeight;
-                    currentDefense -= _itemDefense;
+                    WeightExceedArmor();
                 }
                 else
                 {
@@ -284,16 +263,13 @@ namespace ConsoleApp8
             }
             else if (subChoice == "2")
             {
-                _itemDefense = ChainArmor.Defense;
-                _armorWeight = ChainArmor.Weight;
+                _itemDefense = _armorList[1].Defense;
+                _armorWeight = _armorList[1].Weight;
                 ArmorWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");
-                    Console.WriteLine("You unequipped your armor.");
-                    _inventoryWeight -= _armorWeight;
-                    currentDefense -= _itemDefense;
+                    WeightExceedArmor();
                 }
                 else
                 {
@@ -302,16 +278,13 @@ namespace ConsoleApp8
             }
             else if (subChoice == "3")
             {
-                _itemDefense = IronArmor.Defense;
-                _armorWeight = IronArmor.Weight;
+                _itemDefense = _armorList[2].Defense;
+                _armorWeight = _armorList[2].Weight;
                 ArmorWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");
-                    Console.WriteLine("You unequipped your armor.");
-                    _inventoryWeight -= _armorWeight;
-                    currentDefense -= _itemDefense;
+                    WeightExceedArmor();
                 }
                 else
                 {
@@ -320,16 +293,13 @@ namespace ConsoleApp8
             }
             else if (subChoice == "4")
             {
-                _itemDefense = ClothArmor.Defense;
-                _armorWeight = ClothArmor.Weight;
+                _itemDefense = _armorList[3].Defense;
+                _armorWeight = _armorList[3].Weight;
                 ArmorWeightFix();
 
                 if (_inventoryWeight > _maxInventoryWeight)
                 {
-                    Console.WriteLine("This would exceed your max carry limit!");
-                    Console.WriteLine("You unequipped your armor.");
-                    _inventoryWeight -= _armorWeight;
-                    currentDefense -= _itemDefense;
+                    WeightExceedArmor();
                 }
                 else
                 {
@@ -417,6 +387,21 @@ namespace ConsoleApp8
             _inventoryWeight += _potionWeight;
             _inventoryWeight += _weaponWeight;
             _inventoryWeight += _armorWeight;
+        }
+
+        public void WeightExceedArmor()
+        {
+            Console.WriteLine("This would exceed your max carry limit!");
+            Console.WriteLine("You unequipped your armor.");
+            _inventoryWeight -= _armorWeight;
+            currentDefense -= _itemDefense;
+        }
+        public void WeightExceedWeapon()
+        {
+            Console.WriteLine("This would exceed your max carry limit!");
+            Console.WriteLine("You unequipped your weapon.");
+            _inventoryWeight -= _weaponWeight;
+            currentDamage -= _itemDamage;
         }
 
         public void Shop(string choice)
