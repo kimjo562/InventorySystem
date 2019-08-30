@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp8
 {
-    class Monster
+    class Monster : Entity
     {
         private string _name = "";
-        private int _maxHealth = 50;
-        private int _health = 50;
         private int _damage = 10;
 
 
@@ -22,21 +20,15 @@ namespace ConsoleApp8
             _damage = damage;
         }
 
-        public string GetName
+        public override string GetName()
         {
-            get
-            {
-                return _name;
-            }           
+            return _name;
 
         }
-        public int GetDamage
+        public override int GetDamage()
         {
-            get
-            {
-                return _damage;
-            }
-
+            return _damage;
+ 
         }
 
         public int Health
@@ -68,19 +60,19 @@ namespace ConsoleApp8
             Console.WriteLine();
         }
 
-        public void Fight(Monster target)
+        public override void Fight(Entity target)
         {
             if(Health <= 0)
             { 
                 return;
             }
 
-            int damage = GetDamage;
+            int damage = GetDamage();
             //target's health - this monster's damage
-            Console.WriteLine(GetName + " attacks! " + target.GetName + " takes " + _damage + " damage.");
+            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + _damage + " damage.");
             // Subtracts the damage from the target monster's health
-            target._health -= damage;
-            Console.WriteLine(target.GetName + " has " + target._health + " health.\n");
+            target.Health -= damage;
+            Console.WriteLine(target.GetName() + " has " + target.Health + " health.\n");
 
         }
 
@@ -95,10 +87,10 @@ namespace ConsoleApp8
             while(!validInput)
             {
                 int choice = 0;
-                Console.WriteLine("\nWho will " + GetName + " fight? ");
+                Console.WriteLine("\nWho will " + GetName() + " fight? ");
                 for (int i = 0; i < targets.Length; i++)
                 {
-                    Console.WriteLine((i + 1) + ": " + targets[i].GetName);
+                    Console.WriteLine((i + 1) + ": " + targets[i].GetName());
 
                 }
                 choice = Convert.ToInt32(Console.ReadLine());               // Grab Input
@@ -107,7 +99,7 @@ namespace ConsoleApp8
                 {
                     validInput = true;
                     //Fight the Chosen Target
-                    Console.WriteLine("\nFight " + targets[choice - 1].GetName);                  //checking if it works
+                    Console.WriteLine("\nFight " + targets[choice - 1].GetName());                  //checking if it works
                     Console.WriteLine();
                     Fight(targets[choice - 1]);
                 }

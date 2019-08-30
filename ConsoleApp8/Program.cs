@@ -11,6 +11,16 @@ namespace InventorySystem
     {
         static void Main(string[] args)
         {
+/*
+
+            int totalDamage = + Name.GetDamage();
+            Console.Write("You do a total for: " + Name.GetDamage());
+
+            Console.ReadKey();
+*/
+
+
+
             // Created a Bunch of Monsters
             Monster slime = new Monster("Slime", 50, 10);
             Monster rat = new Monster("Rat", 25, 5);
@@ -83,9 +93,9 @@ namespace InventorySystem
             {
                 Console.WriteLine("Whose inventory?");
                 Console.WriteLine("---------------");
-                Console.WriteLine("1.) " + player.Name());
-                Console.WriteLine("2.) " + justyes.Name());
-                Console.WriteLine("3.) " + yeetman.Name());
+                Console.WriteLine("1.) " + player.GetName());
+                Console.WriteLine("2.) " + justyes.GetName());
+                Console.WriteLine("3.) " + yeetman.GetName());
                 Console.WriteLine("0.) Exit");
                 choice = Console.ReadLine();
                 Console.WriteLine();

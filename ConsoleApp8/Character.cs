@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp8
 {
-    class Character
+    class Character : Entity
     {
         private string _name = "";
         private int _xp = 0;
@@ -18,6 +18,7 @@ namespace ConsoleApp8
 
 
         protected int _health = 100;                                        // Can be changed by inherited class. (protected int)
+        protected int _maxHealth = 100;
         protected int _mana = 100;                                          // (private int) cannot be change by inherited class.
         protected int _strength = 5;
         protected int _dexterity = 5;
@@ -27,13 +28,21 @@ namespace ConsoleApp8
         public Character(string name)
         {
             _name = name;
+            _health = 100;
+            _maxHealth = 100;
 
         }
 
-        public string Name()
+        public override string GetName()
         {
-
             return _name;
+        }
+
+        public override int GetDamage()
+        {
+            // return total damage
+            return _strength + inventory.ItemDamage();
+
         }
 
         public void Print()                                     // This is a constructor and can be used interchangably with other variables.
@@ -53,7 +62,7 @@ namespace ConsoleApp8
 
         public void openInventory()
         {
-            inventory.Menu();                                   // OPens the inventory of the player.
+            inventory.Menu();                                   // Opens the inventory of the player.
 
         }
 
@@ -82,6 +91,53 @@ namespace ConsoleApp8
 
             }
 
+
+        }
+
+                public override void Fight(Entity target)
+        {
+            if(Health <= 0)
+            { 
+                return;
+            }
+
+            int damage = GetDamage();
+            //target's health - this monster's damage
+            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + _damage + " damage.");
+            // Subtracts the damage from the target monster's health
+            target.Health -= damage;
+            Console.WriteLine(target.GetName() + " has " + target.Health + " health.\n");
+
+        }
+
+        public void Fight(Entity[] targets)
+        {
+            if (Health <= 0)
+            {
+                return;
+            }
+
+            bool validInput = false;
+            while(!validInput)
+            {
+                int choice = 0;
+                Console.WriteLine("\nWho will " + GetName() + " fight? ");
+                for (int i = 0; i < targets.Length; i++)
+                {
+                    Console.WriteLine((i + 1) + ": " + targets[i].GetName());
+
+                }
+                choice = Convert.ToInt32(Console.ReadLine());               // Grab Input
+
+                if(choice >= 0 && choice <= targets.Length)
+                {
+                    validInput = true;
+                    //Fight the Chosen Target
+                    Console.WriteLine("\nFight " + targets[choice - 1].GetName());                  //checking if it works
+                    Console.WriteLine();
+                    Fight(targets[choice - 1]);
+                }
+            }
 
         }
 
