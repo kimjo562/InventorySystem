@@ -52,7 +52,7 @@ namespace ConsoleApp8
             }
         }
 
-        public void Print()
+        public override void Print()
         {
             Console.WriteLine("Monster: " + _name);
             Console.WriteLine("Health: "+ _health + " / " + _maxHealth);
@@ -76,7 +76,7 @@ namespace ConsoleApp8
 
         }
 
-        public void Fight(Monster[] targets)
+        public override void Fight(Entity[] targets)
         {
             if (Health <= 0)
             {

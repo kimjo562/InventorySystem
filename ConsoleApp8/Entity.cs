@@ -58,10 +58,15 @@ namespace ConsoleApp8
 
 
         }
-        
-        
+        public virtual void Print()
+        {
 
 
-        
-    }
+
+        }
+
+
+
+
+}
 }

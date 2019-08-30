@@ -8,10 +8,10 @@ namespace ConsoleApp8
 {
     class Encounter
     {
-        private Monster[] _goodMonster;
-        private Monster[] _badMonster;
+        private Entity[] _goodMonster;
+        private Entity[] _badMonster;
 
-        public Encounter(Monster[] team1, Monster[] team2)
+        public Encounter(Entity[] team1, Entity[] team2)
         {
             _goodMonster = team1;
             _badMonster = team2;
@@ -23,14 +23,14 @@ namespace ConsoleApp8
         {   // Iterate each monsters and Print
             for (int i = 0; i < _goodMonster.Length; i++)                   //Starts and 0 and checks whats in slot one, then increments by 1, once it hits the middle condition, it will stop.
             {
-                Monster currentMonster = _goodMonster[i];
+                Entity currentMonster = _goodMonster[i];
                 currentMonster.Print();
                 
             }
             Console.WriteLine();
             for (int i = 0; i < _badMonster.Length; i++)                   //Starts and 0 and checks whats in slot one, then increments by 1, once it hits the middle condition, it will stop.
             {
-                Monster currentMonster = _badMonster[i];
+                Entity currentMonster = _badMonster[i];
                 currentMonster.Print();
 
             }
@@ -64,7 +64,7 @@ namespace ConsoleApp8
                 bool team1Alive = false;
                 for (int i = 0; i < _goodMonster.Length ; i++)
                 {
-                    Monster currentMonster = _goodMonster[i];
+                    Entity currentMonster = _goodMonster[i];
                     if(currentMonster.Health > 0)
                     {
                         team1Alive = true;
@@ -79,7 +79,7 @@ namespace ConsoleApp8
                 bool team2Alive = false;
                 for (int i = 0; i < _badMonster.Length; i++)
                 {
-                    Monster currentMonster = _badMonster[i];
+                    Entity currentMonster = _badMonster[i];
                     if (currentMonster.Health > 0)
                     {
                         team2Alive = true;
@@ -106,5 +106,6 @@ namespace ConsoleApp8
             }
 
         }
+
     }
 }

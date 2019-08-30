@@ -45,7 +45,7 @@ namespace ConsoleApp8
 
         }
 
-        public void Print()                                     // This is a constructor and can be used interchangably with other variables.
+        public override void Print()                                     // This is a constructor and can be used interchangably with other variables.
         {
             Console.WriteLine(_name + "          Level: " + _level + "    XP: " + _xp);
             Console.WriteLine("Health: " + _health);
@@ -94,16 +94,16 @@ namespace ConsoleApp8
 
         }
 
-                public override void Fight(Entity target)
+        public override void Fight(Entity target)
         {
-            if(Health <= 0)
-            { 
+            if (Health <= 0)
+            {
                 return;
             }
 
             int damage = GetDamage();
             //target's health - this monster's damage
-            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + _damage + " damage.");
+            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage.");
             // Subtracts the damage from the target monster's health
             target.Health -= damage;
             Console.WriteLine(target.GetName() + " has " + target.Health + " health.\n");
@@ -118,7 +118,7 @@ namespace ConsoleApp8
             }
 
             bool validInput = false;
-            while(!validInput)
+            while (!validInput)
             {
                 int choice = 0;
                 Console.WriteLine("\nWho will " + GetName() + " fight? ");
@@ -129,7 +129,7 @@ namespace ConsoleApp8
                 }
                 choice = Convert.ToInt32(Console.ReadLine());               // Grab Input
 
-                if(choice >= 0 && choice <= targets.Length)
+                if (choice >= 0 && choice <= targets.Length)
                 {
                     validInput = true;
                     //Fight the Chosen Target
