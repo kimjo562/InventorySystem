@@ -13,7 +13,20 @@ namespace InventorySystem
 
         static void Main(string[] args)
         {
-            /*
+            // Created a Bunch of Monsters  (Name, Health, Damage, Defense, Exp gained if killed)
+            Entity slime = new Monster("Slime", 80, 20, 10, 30);
+            Entity rat = new Monster("Rat", 45, 10, 5, 10);
+            Entity zombie = new Monster("Zombie", 60, 30, 10, 250);
+            Entity skeleton = new Monster("Skeleton", 65, 20, 15, 600);
+            Character myself = new Knight("PLAYER");                                            // Knight already has its own stats, so don't make one.
+
+            // Create two arrays and place the monsters into them
+            Entity[] goodTeam = { myself, rat, slime };
+            Entity[] badTeam = { zombie, skeleton };
+
+            // myself.openInventory();
+
+
 
             // 0: Courtyard                          Start                            North: Castle Gate          South: Village            East: *None*            West: Graveyard
             // 1: Castle Gate                                                         North: *None*               South: Courtyard          East: *None*            West: *None*
@@ -30,7 +43,6 @@ namespace InventorySystem
             Scene[] scenes = { courtyard, castleGate, graveyard, village };
             Map map = new Map(0, scenes);
 
-            */
 
             /*
             map.PrintCurrentScene();
@@ -42,43 +54,20 @@ namespace InventorySystem
             map.PrintCurrentScene();
            */
 
-      //      map.Menu();
+              map.Menu();
 
-      //      Console.ReadKey();
-
-
-     //           return;
-
-            
-/*
-            int totalDamage = + Name.GetDamage();
-            Console.Write("You do a total for: " + Name.GetDamage());
-
-            Console.ReadKey();
-*/
+                 Console.ReadKey();
 
 
+                  return;
 
 
-            // Created a Bunch of Monsters
-            Entity slime = new Monster("Slime", 80, 20, 5);
-            Entity rat = new Monster("Rat", 45, 10, 0);
-            Entity zombie = new Monster("Zombie", 60, 30, 10);
-            Entity skeleton = new Monster("Skeleton", 65, 20, 15);
-            Character myself = new Knight("PLAYER");                                            // Knight already has its own stats, so don't make one.
+            /*
+                        int totalDamage = + Name.GetDamage();
+                        Console.Write("You do a total for: " + Name.GetDamage());
 
-            // Create two arrays and place the monsters into them
-            Entity[] goodTeam = { myself, rat, slime };
-            Entity[] badTeam = { zombie, skeleton };
-
-            //Create an enoutner for the two arrays of monsters
-            Encounter encounter = new Encounter(goodTeam, badTeam);
-            encounter.Print();
-            myself.openInventory();
-            encounter.BeginRound();
-            encounter.Start();
-
-            Console.ReadKey();
+                        Console.ReadKey();
+            */
 
 
 

@@ -9,7 +9,6 @@ namespace InventorySystem
     class Character : Entity
     {
         private string _name = "";
-        private int _xp = 0;
         private int _level = 1;
         private int[] _requiredXP = { 100, 300, 800, 1500 };                // In slot 1 or (to level up to level 2) it requires 100 XP. slot 2 (300 XP for Level 3 ect.)
 
@@ -80,7 +79,7 @@ namespace InventorySystem
             set                                                 // Will send whatever it needs to be sent.
             {
                 _xp = value;
-                Console.WriteLine(_name + "has have gained experience and now has " + _xp);
+                Console.WriteLine(_name + " has have gained experience and now has " + _xp);
                 if (_level <= _requiredXP.Length)                // requiredXP.Length (Length will check the length of the array.)
                 {
                     if (_xp >= _requiredXP[_level - 1])

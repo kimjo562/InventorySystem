@@ -17,7 +17,7 @@ namespace InventorySystem
             _dexterity = 5;
             _wisdom = 2;
             _defense = 0;                              //This can change the characters base defense (Default 0)
-
+            _xp = 0;
 
         }
 

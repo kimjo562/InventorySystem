@@ -10,6 +10,7 @@ namespace InventorySystem
     {
         protected int _health = 100;
         protected int _maxHealth = 100;
+        protected int _xp;
 
 
         public int Health
@@ -33,6 +34,12 @@ namespace InventorySystem
             }
         }
 
+        public virtual string GetName()
+        {
+            return "*Placeholder Boi";
+
+        }
+
         public virtual int GetDamage()
         {
             return 0;
@@ -45,14 +52,14 @@ namespace InventorySystem
 
         }
 
-        public virtual string GetName()
+        public virtual int GetXP()
         {
-            return "*Placeholder Boi";
+            return _xp;
+
         }
 
         public virtual void Fight(Entity target)
         {
-
 
 
         }
@@ -61,12 +68,9 @@ namespace InventorySystem
         {
 
 
-
-
         }
         public virtual void Print()
         {
-
 
 
         }

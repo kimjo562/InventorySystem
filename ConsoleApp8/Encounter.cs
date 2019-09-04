@@ -8,8 +8,8 @@ namespace InventorySystem
 {
     class Encounter
     {
-        private Entity[] _goodMonster;
-        private Entity[] _badMonster;
+        private Entity[] _goodMonster;                                                  
+        private Entity[] _badMonster;                                                   
 
         public Encounter(Entity[] team1, Entity[] team2)
         {
@@ -36,6 +36,18 @@ namespace InventorySystem
             }
 
         }
+        // Return the total XP of all the creatures on one team
+        public int GetTotalXP(Entity[] entities)
+        {
+            int total = 0;
+            for (int i = 0; i < entities.Length; i++)
+            {
+                total += entities[i].GetXP();
+            }
+
+            return total;
+        }
+
         public void BeginRound()
         {
             //Iterate through good monsters
@@ -96,11 +108,38 @@ namespace InventorySystem
                     //fight
                     stillFighting = true;
                     BeginRound();
-                }
+                }             
                 else
                 {
                     //stop
                     stillFighting = false;
+
+                    if(team1Alive)
+                    {   //Gives XP to each Character in Team 1
+                        foreach (Entity cr in _goodMonster)
+                        {
+                            if(cr is Character)
+                            {
+                                Character ch = (Character)cr;
+                                ch.Experience += GetTotalXP(_badMonster);
+                            }
+                            Console.ReadKey();
+                        }
+
+                    }
+                    else if(team2Alive)
+                    {   //Gives XP to each Character in Team 2
+                        foreach (Entity cr in _badMonster)
+                        {
+                            if (cr is Character)
+                            {
+                                Character ch = (Character)cr;
+                                ch.Experience += GetTotalXP(_goodMonster);
+                            }
+
+                        }
+                    }
+
                 }
                 Print();
             }

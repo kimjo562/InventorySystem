@@ -13,13 +13,14 @@ namespace InventorySystem
         private int _defense = 5;
 
 
-        public Monster(string name, int health, int damage, int defense)                                     // This is a constructor and can be used interchangably with other variables.
+        public Monster(string name, int health, int damage, int defense, int experience)                                     // This is a constructor and can be used interchangably with other variables.
         {
             _name = name;
             _maxHealth = health;
             _health = health;
             _damage = damage;
             _defense = defense;
+            _xp = experience;
         }
 
         public override string GetName()
@@ -38,6 +39,11 @@ namespace InventorySystem
             return _defense;
         }
 
+        public override int GetXP()
+        {
+            return _xp;
+        }
+
         public override void Print()
         {
             Console.WriteLine("Monster: " + _name);
@@ -46,6 +52,8 @@ namespace InventorySystem
             Console.WriteLine("Combat Defense: " +_defense);
             Console.WriteLine();
         }
+
+
 
         public override void Fight(Entity target)
         {

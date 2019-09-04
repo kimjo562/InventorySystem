@@ -10,7 +10,8 @@ namespace InventorySystem
     class Map
     {
         private int _currentLocation = 0;                                                   // ID of the current scene
-        private Scene[] _sceneList;                                                         // List of all the scens on the map
+        private Scene[] _sceneList;                                                         // List of all the scenes on the map
+        private Entity[] _players;
 
         public Map(int startingSceneID, Scene[] scenes)
         {
@@ -123,9 +124,38 @@ namespace InventorySystem
                 Console.WriteLine("There is nothing in that direction");
 
             }
+            CheckForEntities();
+        }
+
+        public void Search()
+        {
+            // If the current scene is valid. 
+            if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
+            {
+                // Search the Room
+                Console.WriteLine(_sceneList[_currentLocation].GetHidden());
+            }
+
 
         }
 
+        public void CheckForEntities()
+        {
+            // If the current scene is valid. 
+            if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
+            {
+                Scene currentScene = _sceneList[_currentLocation];
+                if (currentScene.GetCleared() == false)
+                {
+                    // Fight
+                    Encounter encounter = new Encounter(_players, currentScene.GetEnemies());
+                    encounter.Start();
+                }
+
+            }
+
+        }
+        
         public void Save(string path)
         {
             // Creates a writer for the file at our path
@@ -154,17 +184,7 @@ namespace InventorySystem
 
         }
 
-        public void Search()
-        {
-            // If the current scene is valid. 
-            if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
-            {
-                // Search the Room
-                Console.WriteLine(_sceneList[_currentLocation].GetHidden());
-            }
 
-
-        }
 
     }
 }
