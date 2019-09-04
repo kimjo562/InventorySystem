@@ -1,4 +1,4 @@
-﻿using ConsoleApp8;
+﻿using InventorySystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,37 @@ namespace InventorySystem
     {
         static void Main(string[] args)
         {
-/*
+            // 0: Courtyard
+            // 1: Castle Gate
+            // 2: Graveyard
+            // 3: Village
+//                                                          N   S   E   W                                               
+            Scene courtyard = new Scene("Courtyard",        1,  3, -1,  2, "The hub area intersecting between three main areas of the town. It has a fountain at the center of it and its very open and wide with a paved road covering the ground.\nThere is way North, South, and West of here.");
+            Scene castleGate = new Scene("Castle Gate",    -1,  0, -1, -1, "You approach a large gate which acts as the entry way to the castle, fortifed with steel bars and a couple of guards hanging around the sides.\nThere is an exit to the south.");
+            Scene graveyard = new Scene("Graveyard",       -1, -1,  0, -1, "Upon entering, you feel a chill going down your spine, an uneasy feeling wells up inside you. You see in front of you several graves, mostly of previous kings and queens, and some formally well known knights and soliders who laid their life of the country. Nonetheless, you pay respects.\nThere is an exit to the north and east");
+            Scene village = new Scene("Village",            0, -1,  1, -1, "You spot a small village as you walk by, further inspection show its a fairly small community mostly made up of shopkeepers and blacksmiths, and couple of shops located nearby.\nThere is an exit *Blank and *Blank*");
 
+            // Has to be placed in an order within the array if you want it to work correctly (ORDER MATTERS)
+            Scene[] scenes = { courtyard, castleGate, graveyard, village };
+            Map map = new Map(0, scenes);
+
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 1;
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 2;
+            map.PrintCurrentScene();
+            map.CurrentSceneID = 3;
+            map.PrintCurrentScene();
+           
+
+            Console.ReadKey();
+
+
+
+                return;
+
+
+/*
             int totalDamage = + Name.GetDamage();
             Console.Write("You do a total for: " + Name.GetDamage());
 

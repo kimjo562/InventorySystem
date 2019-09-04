@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp8
+namespace InventorySystem
 {
     class AttackItem : Item                                                         // It will also have what Item will have. (Inherited)
     {

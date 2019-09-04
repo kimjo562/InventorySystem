@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttackItem.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="Scene.cs" />
     <Compile Include="Encounter.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Monster.cs" />
