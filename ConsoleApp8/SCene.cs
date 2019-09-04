@@ -14,6 +14,7 @@ namespace InventorySystem
         private int _south;
         private int _east;
         private int _west;
+        private string _hidden;
         
         public Scene(string name, int northID, int southID, int eastID, int westID, string description)
         {
@@ -23,7 +24,19 @@ namespace InventorySystem
             _south = southID;
             _east = eastID;
             _west = westID;
+            _hidden = "You found nothing.";
 
+        }
+
+        public Scene(string name, int northID, int southID, int eastID, int westID, string description, string hidden)
+        {
+            _name = name;
+            _description = description;
+            _north = northID;
+            _south = southID;
+            _east = eastID;
+            _west = westID;
+            _hidden = hidden;
         }
 
         // Returns the Name
@@ -74,8 +87,25 @@ namespace InventorySystem
                 }                                                                                                               // We have to make sure the map knows not to attempt to travel to -1;
             }
             // Return the integer ID of that direction
-            return -1;
+            return -1;                                                                                                          // -1 is like a map boundary.
+        }
+
+        public int cordCheck()
+        {
+            Console.Write(_north.ToString() + " ");
+            Console.Write(_south.ToString() + " ");
+            Console.Write(_east.ToString() + " ");
+            Console.Write(_west.ToString() + " ");
+            return 0;
+        }
+
+        public string GetHidden()
+        {
+            return _hidden;
+
         }
 
     }
+        
 }
+
