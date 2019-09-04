@@ -15,10 +15,6 @@ namespace InventorySystem
 
         private Inventory inventory = new Inventory();                      // Creating an inventory for each character made.
 
-
-
-        protected int _health = 100;                                        // Can be changed by inherited class. (protected int)
-        protected int _maxHealth = 100;
         protected int _mana = 100;                                          // (private int) cannot be change by inherited class.
         protected int _strength = 5;
         protected int _dexterity = 5;
@@ -28,8 +24,6 @@ namespace InventorySystem
         public Character(string name)
         {
             _name = name;
-            _health = 100;
-            _maxHealth = 100;
 
         }
 
@@ -110,7 +104,7 @@ namespace InventorySystem
 
         }
 
-        public void Fight(Entity[] targets)
+        public override void Fight(Entity[] targets)
         {
             if (Health <= 0)
             {

@@ -9,8 +9,12 @@ namespace InventorySystem
 {
     class Program
     {
+        public static Random random = new Random();
+
         static void Main(string[] args)
         {
+            /*
+
             // 0: Courtyard                          Start                            North: Castle Gate          South: Village            East: *None*            West: Graveyard
             // 1: Castle Gate                                                         North: *None*               South: Courtyard          East: *None*            West: *None*
             // 2: Graveyard                                                           North: *None*               South: *None*             East: Courtyard         West: *None*
@@ -26,6 +30,8 @@ namespace InventorySystem
             Scene[] scenes = { courtyard, castleGate, graveyard, village };
             Map map = new Map(0, scenes);
 
+            */
+
             /*
             map.PrintCurrentScene();
             map.CurrentSceneID = 1;
@@ -36,20 +42,21 @@ namespace InventorySystem
             map.PrintCurrentScene();
            */
 
-            map.Menu();
+      //      map.Menu();
 
-            Console.ReadKey();
-
-
-                return;
+      //      Console.ReadKey();
 
 
+     //           return;
+
+            
 /*
             int totalDamage = + Name.GetDamage();
             Console.Write("You do a total for: " + Name.GetDamage());
 
             Console.ReadKey();
 */
+
 
 
 
@@ -60,7 +67,7 @@ namespace InventorySystem
             Entity skeleton = new Monster("Skeleton", 35, 10);
             Character myself = new Knight("Player");                                            // Knight already has its own stats, so don't make one.
 
-            // Create two arrays and palce the monsters into them
+            // Create two arrays and place the monsters into them
             Entity[] goodTeam = { myself, rat, slime };
             Entity[] badTeam = { zombie, skeleton };
 
@@ -70,6 +77,9 @@ namespace InventorySystem
 
             encounter.BeginRound();
             encounter.Start();
+
+            Console.ReadKey();
+
             encounter.Print();
 
             myself.openInventory();

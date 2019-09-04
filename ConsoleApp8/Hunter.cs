@@ -10,6 +10,7 @@ namespace InventorySystem
     {
         public Hunter(string name) : base(name)
         {
+            _maxHealth = 250;
             _health = 150;
             _mana = 75;
             _strength = 4;

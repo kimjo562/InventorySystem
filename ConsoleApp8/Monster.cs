@@ -31,27 +31,6 @@ namespace InventorySystem
  
         }
 
-        public int Health
-        {
-            get
-            {
-                return _health;
-            }
-            set
-            {
-                _health = value;
-                if (_health > _maxHealth)
-                {
-                    _health = _maxHealth;
-
-                }
-                else if (_health < 0)
-                {
-                    _health = 0;
-                }
-            }
-        }
-
         public override void Print()
         {
             Console.WriteLine("Monster: " + _name);
@@ -83,6 +62,11 @@ namespace InventorySystem
                 return;
             }
 
+
+            int choice = Program.random.Next(0, targets.Length);                                   // Randomly picks a number from 0 - The amount of enemies being fought.
+            Fight(targets[choice]);
+
+            /*
             bool validInput = false;
             while(!validInput)
             {
@@ -104,7 +88,7 @@ namespace InventorySystem
                     Fight(targets[choice - 1]);
                 }
             }
-
+            */
         }
     }
 }

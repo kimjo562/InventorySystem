@@ -10,6 +10,7 @@ namespace InventorySystem
     {
         public Wizard(string name) : base(name)
         {
+            _maxHealth = 85;
             _health = 85;
             _mana = 200;
             _strength = 2;

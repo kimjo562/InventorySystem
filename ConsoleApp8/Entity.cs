@@ -8,8 +8,8 @@ namespace InventorySystem
 {
     class Entity
     {
-        protected int _health = 50;
-        protected int _maxHealth = 50;
+        protected int _health = 100;
+        protected int _maxHealth = 100;
 
 
         public int Health
