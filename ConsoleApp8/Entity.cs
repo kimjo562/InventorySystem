@@ -39,6 +39,12 @@ namespace InventorySystem
 
         }
 
+        public virtual int GetDefense()
+        {
+            return 0;
+
+        }
+
         public virtual string GetName()
         {
             return "*Placeholder Boi";

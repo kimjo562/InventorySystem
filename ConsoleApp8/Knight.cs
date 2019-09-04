@@ -10,12 +10,13 @@ namespace InventorySystem
     {
         public Knight(string name) : base(name)
         {
-            _maxHealth = 250;
-            _health = 250;
+            _maxHealth = 150;
+            _health = 150;
             _mana = 30;
             _strength = 8;
             _dexterity = 5;
             _wisdom = 2;
+            _defense = 0;                              //This can change the characters base defense (Default 0)
 
 
         }

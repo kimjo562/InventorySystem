@@ -10,13 +10,13 @@ namespace InventorySystem
     {
         public Hunter(string name) : base(name)
         {
-            _maxHealth = 250;
+            _maxHealth = 150;
             _health = 150;
             _mana = 75;
             _strength = 4;
             _dexterity = 8;
             _wisdom = 4;
-
+            _defense = 0;                              //This can change the characters base defense (Default 0)
 
         }
 

@@ -61,11 +61,11 @@ namespace InventorySystem
 
 
             // Created a Bunch of Monsters
-            Entity slime = new Monster("Slime", 50, 10);
-            Entity rat = new Monster("Rat", 25, 5);
-            Entity zombie = new Monster("Zombie", 30, 15);
-            Entity skeleton = new Monster("Skeleton", 35, 10);
-            Character myself = new Knight("Player");                                            // Knight already has its own stats, so don't make one.
+            Entity slime = new Monster("Slime", 80, 20, 5);
+            Entity rat = new Monster("Rat", 45, 10, 0);
+            Entity zombie = new Monster("Zombie", 60, 30, 10);
+            Entity skeleton = new Monster("Skeleton", 65, 20, 15);
+            Character myself = new Knight("PLAYER");                                            // Knight already has its own stats, so don't make one.
 
             // Create two arrays and place the monsters into them
             Entity[] goodTeam = { myself, rat, slime };
@@ -74,15 +74,9 @@ namespace InventorySystem
             //Create an enoutner for the two arrays of monsters
             Encounter encounter = new Encounter(goodTeam, badTeam);
             encounter.Print();
-
+            myself.openInventory();
             encounter.BeginRound();
             encounter.Start();
-
-            Console.ReadKey();
-
-            encounter.Print();
-
-            myself.openInventory();
 
             Console.ReadKey();
 

@@ -10,14 +10,16 @@ namespace InventorySystem
     {
         private string _name = "";
         private int _damage = 10;
+        private int _defense = 5;
 
 
-        public Monster(string name, int health, int damage)                                     // This is a constructor and can be used interchangably with other variables.
+        public Monster(string name, int health, int damage, int defense)                                     // This is a constructor and can be used interchangably with other variables.
         {
             _name = name;
             _maxHealth = health;
             _health = health;
             _damage = damage;
+            _defense = defense;
         }
 
         public override string GetName()
@@ -31,11 +33,17 @@ namespace InventorySystem
  
         }
 
+        public override int GetDefense()
+        {
+            return _defense;
+        }
+
         public override void Print()
         {
             Console.WriteLine("Monster: " + _name);
             Console.WriteLine("Health: "+ _health + " / " + _maxHealth);
             Console.WriteLine("Combat Damage: " +_damage);
+            Console.WriteLine("Combat Defense: " +_defense);
             Console.WriteLine();
         }
 
@@ -47,9 +55,11 @@ namespace InventorySystem
             }
 
             int damage = GetDamage();
+            int defense = GetDefense();
             //target's health - this monster's damage
-            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + _damage + " damage.");
+            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage, but blocked by " + target.GetDefense() + " armor.");
             // Subtracts the damage from the target monster's health
+            damage -= target.GetDefense();
             target.Health -= damage;
             Console.WriteLine(target.GetName() + " has " + target.Health + " health.\n");
 

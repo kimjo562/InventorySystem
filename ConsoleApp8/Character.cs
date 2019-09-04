@@ -19,6 +19,8 @@ namespace InventorySystem
         protected int _strength = 5;
         protected int _dexterity = 5;
         protected int _wisdom = 5;
+        
+        protected int _defense = 0;
 
 
         public Character(string name)
@@ -39,6 +41,13 @@ namespace InventorySystem
 
         }
 
+        public override int GetDefense()
+        {
+            // return current defense.
+            return _defense + inventory.ItemDefense();
+
+        }
+
         public override void Print()                                     // This is a constructor and can be used interchangably with other variables.
         {
             Console.WriteLine(_name + "          Level: " + _level + "    XP: " + _xp);
@@ -47,6 +56,7 @@ namespace InventorySystem
             Console.WriteLine("Stats");
             Console.WriteLine("-----------------------------------");
             Console.WriteLine("Combat Damage: " + (_strength + inventory.ItemDamage()));
+            Console.WriteLine("Combat Defense: " + (_defense + inventory.ItemDefense()));
             Console.WriteLine("Strength: " + _strength);
             Console.WriteLine("Dexterity: " + _dexterity);
             Console.WriteLine("Wisdom: " + _wisdom);
@@ -96,9 +106,11 @@ namespace InventorySystem
             }
 
             int damage = GetDamage();
+            int defense = GetDefense();
             //target's health - this monster's damage
-            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage.");
+            Console.WriteLine(GetName() + " attacks! " + target.GetName() + " takes " + damage + " damage, but blocked by "+ target.GetDefense() + " armor.");
             // Subtracts the damage from the target monster's health
+            damage -= target.GetDefense();
             target.Health -= damage;
             Console.WriteLine(target.GetName() + " has " + target.Health + " health.\n");
 
