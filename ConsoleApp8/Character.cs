@@ -121,6 +121,14 @@ namespace InventorySystem
 
         }
 
+        public override void Load(string name, int xp, int level)
+        {
+            _name = name;
+            _xp = xp;
+            _level = level;
+
+        }
+
         public override void Fight(Entity[] targets)
         {
             if (Health <= 0)

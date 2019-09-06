@@ -12,7 +12,7 @@ namespace InventorySystem
         private int _currentLocation = 0;                                                   // ID of the current scene
         private Scene[] _sceneList;                                                         // List of all the scenes on the map
         private Entity[] _players;
-        Entity player = new Character("");
+        private Entity player = new Character("");
 
         public Map(int startingSceneID, Scene[] scenes, Entity[] players)
         {
@@ -107,7 +107,7 @@ namespace InventorySystem
                     for (int i = 0; i < _players.Length; i++)
                     {
                         player = _players[i];
-                        Console.WriteLine((i + 1)+ " .) " + player.GetName());                  
+                        Console.WriteLine((i + 1)+ ".) " + player.GetName());                  
                     }
                     int subchoice = Convert.ToInt32(Console.ReadLine());
                     player = _players[subchoice-1];
@@ -199,6 +199,16 @@ namespace InventorySystem
                 StreamReader reader = File.OpenText(path);
                 // Write to it the same way we read from console.
                 CurrentSceneID = Convert.ToInt32(reader.ReadLine());
+                int partySize = Convert.ToInt32(reader.ReadLine());
+                for(int i = 0; i < partySize; i++)
+                {
+                    string name = reader.ReadLine();
+                    int xp = Convert.ToInt32(reader.ReadLine());
+                    int level = Convert.ToInt32(reader.ReadLine());
+                    player.Load(name, xp, level);
+                    _players[i] = player;
+                }
+
                 // Close it
                 reader.Close();
 

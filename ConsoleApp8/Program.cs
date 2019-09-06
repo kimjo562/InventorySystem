@@ -26,6 +26,7 @@ namespace InventorySystem
             // Create two arrays and place the monsters into them
             Entity[] players = { myself, OiBoi, Yeetman };
             Entity[] monsterTeam = { zombie, skeleton, rat, slime };
+            Entity[] nothingTeam = { };
 
 
             // 0: Courtyard                          Start                            North: Castle Gate          South: Village            East: *None*            West: Graveyard
@@ -34,7 +35,7 @@ namespace InventorySystem
             // 3: Village                                                             North: Courtyard            South: *None*             East: *None*            West: *None*
 
             //                                              N   S   E   W                                               
-            Scene courtyard = new Scene("Courtyard",        1,  3, -1,  2,  monsterTeam, "The hub area intersecting between three main areas of the town. It has a fountain at the center of it and its very open and wide with a paved road covering the ground.\nThere is way North, South, and West of here.");
+            Scene courtyard = new Scene("Courtyard",        1,  3, -1,  2,  nothingTeam, "The hub area intersecting between three main areas of the town. It has a fountain at the center of it and its very open and wide with a paved road covering the ground.\nThere is way North, South, and West of here.");
             Scene castleGate = new Scene("Castle Gate",    -1,  0, -1, -1,  monsterTeam, "You approach a large gate which acts as the entry way to the castle, fortifed with steel bars and a couple of guards hanging around the sides.\nThere is an exit to the south.");
             Scene graveyard = new Scene("Graveyard",       -1, -1,  0, -1,  monsterTeam, "Upon entering, you feel a chill going down your spine, an uneasy feeling wells up inside you. You see in front of you several graves, mostly of previous kings and queens, and some formally well known knights and soliders who laid their life of the country. Nonetheless, you pay respects.\nThere is an exit to the east.");
             Scene village = new Scene("Village",            0, -1, -1, -1,  monsterTeam, "You spot a small village as you walk by, further inspection show its a fairly small community mostly made up of shopkeepers and blacksmiths, and couple of shops located nearby.\nThere is an exit North.");

@@ -88,6 +88,11 @@ namespace InventorySystem
 
         }
 
+        public virtual void Load(string name, int xp, int level)
+        {
+
+
+        }
 
 
     }
