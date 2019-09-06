@@ -18,10 +18,8 @@ namespace InventorySystem
         private Entity[] _enemies;
         private bool _cleared = false;
 
-        Entity[] enemies = { zombie, skeleton };
 
-
-        public Scene(string name, int northID, int southID, int eastID, int westID, string description)
+        public Scene(string name, int northID, int southID, int eastID, int westID, Entity[] enemies , string description)
         {
             _name = name;
             _description = description;
@@ -30,6 +28,8 @@ namespace InventorySystem
             _east = eastID;
             _west = westID;
             _hidden = "You found nothing.";
+            _enemies = enemies;
+
             if(_enemies.Length == 0)
             {
                 _cleared = true;
@@ -37,7 +37,7 @@ namespace InventorySystem
 
         }
 
-        public Scene(string name, int northID, int southID, int eastID, int westID, string description, string hidden)
+        public Scene(string name, int northID, int southID, int eastID, int westID, Entity[] enemies, string description, string hidden)
         {
             _name = name;
             _description = description;

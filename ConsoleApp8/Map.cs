@@ -13,11 +13,11 @@ namespace InventorySystem
         private Scene[] _sceneList;                                                         // List of all the scenes on the map
         private Entity[] _players;
 
-        public Map(int startingSceneID, Scene[] scenes)
+        public Map(int startingSceneID, Scene[] scenes, Entity[] players)
         {
             _currentLocation = startingSceneID;
             _sceneList = scenes;
-
+            _players = players;
         }
 
         public void PrintCurrentScene()
