@@ -11,6 +11,7 @@ namespace InventorySystem
         protected int _health = 100;
         protected int _maxHealth = 100;
         protected int _xp;
+        protected int _level;
 
 
         public int Health
@@ -58,6 +59,12 @@ namespace InventorySystem
 
         }
 
+        public virtual int GetLevel()
+        {
+            return _level;
+
+        }
+
         public virtual void Fight(Entity target)
         {
 
@@ -75,8 +82,13 @@ namespace InventorySystem
 
         }
 
+        public virtual void openInventory()
+        {
+
+
+        }
 
 
 
-}
+    }
 }

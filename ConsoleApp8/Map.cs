@@ -12,6 +12,7 @@ namespace InventorySystem
         private int _currentLocation = 0;                                                   // ID of the current scene
         private Scene[] _sceneList;                                                         // List of all the scenes on the map
         private Entity[] _players;
+        Entity player = new Character("");
 
         public Map(int startingSceneID, Scene[] scenes, Entity[] players)
         {
@@ -76,6 +77,7 @@ namespace InventorySystem
                 Console.WriteLine("2.) Search");
                 Console.WriteLine("3.) Save");
                 Console.WriteLine("4.) Load");
+                Console.WriteLine("5.) Inventory");
                 Console.WriteLine("0.) Exit");
                 choice = Console.ReadLine();
 
@@ -97,6 +99,21 @@ namespace InventorySystem
                 {
                     Load("SaveFile.txt");
                     Console.WriteLine("Reloaded Save.");
+
+                }
+                else if (choice == "5")
+                {
+                    Console.WriteLine("Whose inventory do you want to open?");
+                    for (int i = 0; i < _players.Length; i++)
+                    {
+                        player = _players[i];
+                        Console.WriteLine((i + 1)+ " .) " + player.GetName());                  
+                    }
+                    int subchoice = Convert.ToInt32(Console.ReadLine());
+                    player = _players[subchoice-1];
+                    Console.WriteLine("");
+                    player.openInventory();
+
 
                 }
             }
@@ -162,6 +179,15 @@ namespace InventorySystem
             StreamWriter writer = File.CreateText(path);
             // Write to it the same way we write                                                                   (Saving at different places will overwrite old one)
             writer.WriteLine(CurrentSceneID);
+            writer.WriteLine(_players.Length);                                                                     // Party Size
+            for(int i = 0; i < _players.Length; i++)
+            {
+                player = _players[i];
+                writer.WriteLine(player.GetName());                                                                // All Party Member's names
+                writer.WriteLine(player.GetLevel());                                                               // All Party Member's Level
+                writer.WriteLine(player.GetXP());                                                                  // All Party Member's in Order XP Values
+            }
+
             writer.Close();
         }
 

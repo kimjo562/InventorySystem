@@ -22,7 +22,6 @@ namespace InventorySystem
         private AttackItem[] _weaponList = new AttackItem[10];                      // [10] Inventory Limit
         private DefenseItem[] _armorList = new DefenseItem[10];                     // [10] Inventory Limit
 
-
         public Inventory()
         {
             //Populate the weapon list
@@ -58,7 +57,7 @@ namespace InventorySystem
             while (choice != "Q")
             {
                 // Display Menu
-                Console.WriteLine("Inventory Menu");
+                Console.WriteLine("Inventory Menu: ");
                 Console.WriteLine("Money: " + gold + "    Weapon Damage: " + currentDamage + "    Armor Defense: " + currentDefense + "    Weight: " + _inventoryWeight + " / " + _maxInventoryWeight + "    Potions Held: " + _potionHeld);
                 Console.WriteLine("1.) Equip Gear \n2.) Unequip Gear \n3.) Add Gold \n4.) Remove Gold \n5.) Shop \n6.) Drink Potion \nQ.) Quit");
 

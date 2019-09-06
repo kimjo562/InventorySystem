@@ -47,6 +47,11 @@ namespace InventorySystem
 
         }
 
+        public override int GetLevel()
+        {
+            return _level;
+        }
+
         public override void Print()                                     // This is a constructor and can be used interchangably with other variables.
         {
             Console.WriteLine(_name + "          Level: " + _level + "    XP: " + _xp);
@@ -63,8 +68,9 @@ namespace InventorySystem
 
         }
 
-        public void openInventory()
+        public override void openInventory()
         {
+            Console.Write(GetName()+ "'s ");
             inventory.Menu();                                   // Opens the inventory of the player.
 
         }

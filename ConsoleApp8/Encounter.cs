@@ -16,7 +16,6 @@ namespace InventorySystem
             _goodMonster = team1;
             _badMonster = team2;
 
-
         }
 
         public void Print()
