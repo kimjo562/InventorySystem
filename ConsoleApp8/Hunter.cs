@@ -8,7 +8,7 @@ namespace InventorySystem
 {
     class Hunter : Character
     {
-        public Hunter(string name) : base(name)
+        public Hunter(string name, string job) : base(name, job)
         {
             _maxHealth = 150;
             _health = 150;

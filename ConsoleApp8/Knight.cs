@@ -8,7 +8,7 @@ namespace InventorySystem
 {
     class Knight : Character 
     {
-        public Knight(string name) : base(name)
+        public Knight(string name, string job) : base(name, job)
         {
             _maxHealth = 150;
             _health = 150;

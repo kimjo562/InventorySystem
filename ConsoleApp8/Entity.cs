@@ -12,6 +12,7 @@ namespace InventorySystem
         protected int _maxHealth = 100;
         protected int _xp;
         protected int _level;
+        protected string _job = "";
 
 
         public int Health
@@ -39,6 +40,11 @@ namespace InventorySystem
         {
             return "*Placeholder Boi";
 
+        }
+
+        public virtual string GetJob()
+        {
+            return _job;
         }
 
         public virtual int GetDamage()
@@ -88,7 +94,7 @@ namespace InventorySystem
 
         }
 
-        public virtual void Load(string name, int xp, int level)
+        public virtual void Load(string name,string job, int xp, int level)
         {
 
 

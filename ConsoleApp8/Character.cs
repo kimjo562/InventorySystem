@@ -18,13 +18,14 @@ namespace InventorySystem
         protected int _strength = 5;
         protected int _dexterity = 5;
         protected int _wisdom = 5;
-        
         protected int _defense = 0;
+        protected string _job = "None";
 
 
-        public Character(string name)
+        public Character(string name, string job)
         {
             _name = name;
+            _job = job;
 
         }
 
@@ -50,6 +51,12 @@ namespace InventorySystem
         public override int GetLevel()
         {
             return _level;
+        }
+
+        public override string GetJob()
+        {
+            return _job;
+
         }
 
         public override void Print()                                     // This is a constructor and can be used interchangably with other variables.
@@ -121,9 +128,10 @@ namespace InventorySystem
 
         }
 
-        public override void Load(string name, int xp, int level)
+        public override void Load(string name, string job ,int xp, int level)
         {
             _name = name;
+            _job = job;
             _xp = xp;
             _level = level;
 

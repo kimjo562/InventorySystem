@@ -18,9 +18,9 @@ namespace InventorySystem
             Entity rat = new Monster("Rat", 45, 10, 5, 10);
             Entity zombie = new Monster("Zombie", 60, 30, 10, 250);
             Entity skeleton = new Monster("Skeleton", 65, 20, 15, 600);
-            Character myself = new Knight("PLAYER");                                            // Knight already has its own stats, so don't make one.
-            Character OiBoi = new Hunter("Oi Boi");
-            Character Yeetman = new Wizard("Yeetman");
+            Character myself = new Knight("PLAYER", "Knight");                                            // Knight already has its own stats, so don't make one.
+            Character OiBoi = new Hunter("Oi Boi", "Hunter");
+            Character Yeetman = new Wizard("Yeetman", "Wizard");
 
 
             // Create two arrays and place the monsters into them
@@ -78,7 +78,7 @@ namespace InventorySystem
             //     Inventory inventory = new Inventory();
             //     inventory.Menu();
 
-
+/*
                         string name = "";
                         string choice = "";
 
@@ -176,7 +176,7 @@ namespace InventorySystem
 
                         Console.ReadKey();
 
-
+*/
         }
     }
 }

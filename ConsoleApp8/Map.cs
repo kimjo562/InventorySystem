@@ -12,7 +12,7 @@ namespace InventorySystem
         private int _currentLocation = 0;                                                   // ID of the current scene
         private Scene[] _sceneList;                                                         // List of all the scenes on the map
         private Entity[] _players;
-        private Entity player = new Character("");
+        private Entity player = new Character("", "");
 
         public Map(int startingSceneID, Scene[] scenes, Entity[] players)
         {
@@ -182,8 +182,9 @@ namespace InventorySystem
             writer.WriteLine(_players.Length);                                                                     // Party Size
             for(int i = 0; i < _players.Length; i++)
             {
-                player = _players[i];
+                player = _players[i];               
                 writer.WriteLine(player.GetName());                                                                // All Party Member's names
+                writer.WriteLine(player.GetJob());                                                                 // All Party Member's Jobs
                 writer.WriteLine(player.GetLevel());                                                               // All Party Member's Level
                 writer.WriteLine(player.GetXP());                                                                  // All Party Member's in Order XP Values
             }
@@ -201,11 +202,13 @@ namespace InventorySystem
                 CurrentSceneID = Convert.ToInt32(reader.ReadLine());
                 int partySize = Convert.ToInt32(reader.ReadLine());
                 for(int i = 0; i < partySize; i++)
-                {
-                    string name = reader.ReadLine();
+                {                
+
+                    string name = (reader.ReadLine());
+                    string job = (reader.ReadLine());
                     int xp = Convert.ToInt32(reader.ReadLine());
                     int level = Convert.ToInt32(reader.ReadLine());
-                    player.Load(name, xp, level);
+                    player.Load(name, job, xp, level);
                     _players[i] = player;
                 }
 
