@@ -13,6 +13,42 @@ namespace InventorySystem
 
         static void Main(string[] args)
         {
+
+            Entity greenslime = new Monster("Green Slime", 80, 20, 10, 30);
+            Console.WriteLine("Health: " + greenslime.Health);
+
+            SpellBook spellbook = new SpellBook(3);                              // (number) = amount of spells
+            spellbook.Page1(greenslime);
+            Console.WriteLine("Health: " + greenslime.Health);
+            spellbook.Page2(greenslime);
+            Console.WriteLine("Health: " + greenslime.Health);
+         
+            spellbook.Page1 = SpellBook.Flare;
+            spellbook.Page1(greenslime);
+            Console.WriteLine("Health: " + greenslime.Health);
+
+            // Assign Page2 to a static method
+            spellbook.Page2 = SpellBook.Healing;
+
+            spellbook.Page2(greenslime);
+            Console.WriteLine("Health: " + greenslime.Health);
+
+            // Added Healing to Page 1
+            spellbook.Page1 += SpellBook.Healing;
+            spellbook.Page1 += SpellBook.Healing;
+            spellbook.Page1(greenslime);
+            Console.WriteLine("Health: " + greenslime.Health);
+
+            spellbook.book[0] = SpellBook.Flare;                                      // Sets Page 1 of book[] as Flare
+            spellbook.book[1] = SpellBook.Healing;                                    // Sets Page 2 of book[] as Healing
+            spellbook.book[0](greenslime);
+            Console.WriteLine("Health: " + greenslime.Health);
+
+            Console.ReadKey();
+
+
+            return;
+
             // Created a Bunch of Monsters  (Name, Health, Damage, Defense, Exp gained if killed)
             Entity slime = new Monster("Slime", 80, 20, 10, 30);
             Entity rat = new Monster("Rat", 45, 10, 5, 10);

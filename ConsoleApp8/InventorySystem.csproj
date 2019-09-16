@@ -51,6 +51,7 @@
     <Compile Include="Monster.cs" />
     <Compile Include="DefenseItem.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="SpellBook.cs" />
     <Compile Include="Wizard.cs" />
     <Compile Include="Hunter.cs" />
     <Compile Include="Knight.cs" />
